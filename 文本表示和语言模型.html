@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>文本表示和语言模型 - Deep Learning</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded affix "><li class="part-title">NN</li><li class="chapter-item expanded affix "><li class="part-title">NLP</li><li class="chapter-item expanded "><a href="NLP.html"><strong aria-hidden="true">2.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="全文检索与关键词提取.html"><strong aria-hidden="true">2.1.</strong> 全文检索与关键词提取</a></li><li class="chapter-item expanded "><a href="文本表示和语言模型.html" class="active"><strong aria-hidden="true">2.2.</strong> 文本表示和语言模型</a></li><li class="chapter-item expanded "><a href="文本分类和相似度计算.html"><strong aria-hidden="true">2.3.</strong> 文本分类和相似度计算</a></li><li class="chapter-item expanded "><a href="文本信息抽取.html"><strong aria-hidden="true">2.4.</strong> 文本信息抽取</a></li><li class="chapter-item expanded "><a href="文本生成.html"><strong aria-hidden="true">2.5.</strong> 文本生成</a></li><li class="chapter-item expanded "><a href="智能问答和对话系统.html"><strong aria-hidden="true">2.6.</strong> 智能问答和对话系统</a></li><li class="chapter-item expanded "><a href="大语言模型.html"><strong aria-hidden="true">2.7.</strong> 大语言模型</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">CV</li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Deep Learning</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="文本表示和语言模型"><a class="header" href="#文本表示和语言模型">文本表示和语言模型</a></h1>
+<ul>
+<li><a href="#%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA">文本表示</a>
+<ul>
+<li><a href="#%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E5%8C%96">文本向量化</a></li>
+<li><a href="#%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B%E7%8B%AC%E7%83%AD%E7%BC%96%E7%A0%81">词袋模型：独热编码</a></li>
+<li><a href="#%E8%AF%8D%E5%B5%8C%E5%85%A5%E8%AF%8D%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA">词嵌入（词向量）表示</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">语言模型</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">静态语言模型</a>
+<ul>
+<li><a href="#word2vec%E6%A8%A1%E5%9E%8B">Word2Vec模型</a></li>
+<li><a href="#glove%E6%A8%A1%E5%9E%8B">GloVe模型</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">预训练语言模型</a>
+<ul>
+<li><a href="#transformer%E6%A8%A1%E5%9E%8B">Transformer模型</a></li>
+<li><a href="#bert%E6%A8%A1%E5%9E%8B">BERT模型</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">大语言模型</a></li>
+</ul>
+<h2 id="文本表示"><a class="header" href="#文本表示">文本表示</a></h2>
+<h3 id="文本向量化"><a class="header" href="#文本向量化">文本向量化</a></h3>
+<p>文本数据：典型的序列数据、字符序列或单词序列</p>
+<p>文本向量化：将文本数据转化为数值张量，尽可能保留语法、语义信息</p>
+<p>目的：将文本表示为一系列能够表达文本语义的向量，方便后续处理</p>
+<p>方法：</p>
+<ul>
+<li>按词切分，将每个单词转换为一个向量</li>
+<li>按字符切分，将每个字符转换为一个向量</li>
+<li>按n-gram切分，将每个n-gram转换为一个向量</li>
+</ul>
+<p>n-gram：多个连续单词或字符的集合，注意n-gram之间可重叠</p>
+<p>Token：单词、字符、n-gram</p>
+<p>中文需要专门的分词工具</p>
+<p>文本表示编码方式：独热编码、词向量（词嵌入）编码</p>
+<h3 id="词袋模型独热编码"><a class="header" href="#词袋模型独热编码">词袋模型：独热编码</a></h3>
+<p>基本思想：将一段文本仅看作一些独立的词语的集合，忽略文本的词序、语法和句法</p>
+<p>词袋模型统计在一个句子中每个单词出现的情况，可以是one-hot编码（是否出现）、TF编码（次数）、TF-IDF编码（TF-IDF值）</p>
+<p>特点：字典中的字没有特定的顺序，句子的整体结构被抛弃</p>
+<p>构建过程：</p>
+<ol>
+<li>对文档集中的所有文本进行分词</li>
+<li>构建整个文档集的词典，假设词典大小为N</li>
+<li>为每条文本生成长度为N的一维向量，向量中的每一维的值为字典中对应序号的词在该文本中出现的次数</li>
+</ol>
+<p>优点：方便分类器处理离散数据、在一定程度上起到了扩充特征的作用</p>
+<p>缺点：没有考虑词序、忽略了词与词之间的关系，得到的特征表示是离散稀疏的</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+import jieba
+
+corpus = [
+    "我是中国人，我爱中国",
+    "我是上海人",
+    "我住在松江大学城"
+]
+
+split_corpus = []
+
+for text in corpus:
+  new_text = " ".join(jieba.lcut(text))
+  split_corpus.append(new_text)
+print(split_corpus)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>['我 是 中国 人 ， 我 爱 中国', '我 是 上海 人', '我 住 在 松江 大学城']
+</code></pre>
+<pre><code class="language-python"># 生成词袋
+cv = CountVectorizer()
+cv_fit = cv.fit_transform(split_corpus)
+print(cv.get_feature_names_out()) #显示特征列表
+print(cv_fit.toarray()) #显示特征向量
+</code></pre>
+<p>输出结果（词语）如下所示：</p>
+<pre><code>['上海' '中国' '大学城' '松江']
+[[0 2 0 0]
+ [1 0 0 0]
+ [0 0 1 1]]
+</code></pre>
+<pre><code class="language-python"># 生成词袋
+cv = CountVectorizer(token_pattern=r"(?u)\b\w+\b")
+cv_fit = cv.fit_transform(split_corpus)
+print(cv.get_feature_names_out()) #显示特征列表
+print(cv_fit.toarray()) #显示特征向量
+</code></pre>
+<p>输出结果（字词）如下所示：</p>
+<pre><code>['上海' '中国' '人' '住' '在' '大学城' '我' '是' '松江' '爱']
+[[0 2 1 0 0 0 2 1 0 1]
+ [1 0 1 0 0 0 1 1 0 0]
+ [0 0 0 1 1 1 1 0 1 0]]
+</code></pre>
+<p>方法一：先向量化，再使用TF-IDF</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfTransformer
+
+tfidf_transformer = TfidfTransformer()
+tfidf_fit = tfidf_transformer.fit_transform(cv_fit)
+print(tfidf_fit.toarray())
+</code></pre>
+<p>方法二：直接使用TfidfVectorizer计算</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = TfidfVectorizer(token_pattern=r"(?u)\b\w+\b")
+tfidf_fit = tfidf.fit_transform(split_corpus)
+print(tfidf_fit.toarray())
+</code></pre>
+<h3 id="词嵌入词向量表示"><a class="header" href="#词嵌入词向量表示">词嵌入（词向量）表示</a></h3>
+<p>定义：通过大量语料的训练，学习单词之间的关系，将每个词都映射到一个较短的词向量</p>
+<p>词向量特征：低维、密集、训练得到</p>
+<p>构建过程：</p>
+<ol>
+<li>对文档集中的所有文本进行分词</li>
+<li>构建整个文档集的词典，每个词用一个低维向量表示</li>
+<li>为每条文本生成一个二维数组，数组中的每一维的值为字典中对应序号的词的一维向量</li>
+</ol>
+<h2 id="语言模型"><a class="header" href="#语言模型">语言模型</a></h2>
+<p>A language model is a probability distribution over sequence of works. ----Dan Jurafsky</p>
+<p>给定词典V，能够计算出任意单词序列w1,w2，……，wn是一句话的概率</p>
+<p>n-gram模型：第n个词的出现只与前n-1个词相关，与其他词无关</p>
+<h2 id="静态语言模型"><a class="header" href="#静态语言模型">静态语言模型</a></h2>
+<p>语言模型认为语句中下一个单词的出现与其前面的单词有关，用其前面的单词预测下一个单词</p>
+<h3 id="word2vec模型"><a class="header" href="#word2vec模型">Word2Vec模型</a></h3>
+<p>语句中的单词只与其相近的单词有关，用其前面的单词预测下一个单词</p>
+<p>主要分为两种类型：</p>
+<ul>
+<li>CBOW：根据周围词预测中心词，输入：某一个特征值的上下文相关的词对应的词向量，输出：该特征词的词向量</li>
+<li>Skip-gram：根据中心词预测周围词，输入：特定的词向量，输出：特定词对应的上下文词向量</li>
+</ul>
+<p>基本思想：从大量文本语料中通过无监督方式学习语义知识的简单神经网络</p>
+<p>作用：生成上下文语义相关的词向量</p>
+<p>模型结构：输入层、隐藏层、输出层</p>
+<p>输入：每个单词的One-hot编码</p>
+<p>输出：词汇表中每个单词的概率</p>
+<p>优点：</p>
+<ol>
+<li>通过大量语料进行无监督训练得到词向量，不需要人工参与</li>
+<li>考虑了单词之间的上下文关系</li>
+<li>训练得到的词向量可以计算单词之间的相似度、语义关系</li>
+<li>训练得到的词向量维度较低，可以避免维度灾难</li>
+<li>通用性强</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>词向量的语义受训练语料的影响</li>
+<li>训练得到的词向量是静态的，词与向量一对一固定，无法更换，无法解决一词多义的问题</li>
+<li>只考虑指定上下文窗口内的信息，没有考虑全局的信息</li>
+<li>无法针对特定任务进行动态优化</li>
+</ol>
+<h3 id="glove模型"><a class="header" href="#glove模型">GloVe模型</a></h3>
+<p>改进Word2Vec，利用语料库的全局信息表示词向量</p>
+<p>基本思想：考虑单词与单词之间的共现信息，通过构建词共现矩阵来学习单词的词向量</p>
+<p>共现矩阵X，其中Xij表示语料库中单词i和单词j共同出现在一个窗口中的次数</p>
+<p>优点：考虑了单词之间的全局信息</p>
+<p>缺点：</p>
+<ol>
+<li>训练得到的词向量仍然是静态的，词与向量一对一固定，无法更改，无法解决一词多义的问题</li>
+<li>无法针对特定任务进行动态优化</li>
+</ol>
+<h2 id="预训练语言模型"><a class="header" href="#预训练语言模型">预训练语言模型</a></h2>
+<h3 id="transformer模型"><a class="header" href="#transformer模型">Transformer模型</a></h3>
+<p>每层encoder结构：一个自注意力层+1个前向神经网络层</p>
+<p>每层decoder结构：一个自注意力层+1个encoder-decoder注意力层+1个前向神经网络层</p>
+<h3 id="bert模型"><a class="header" href="#bert模型">BERT模型</a></h3>
+<p>全称：Bidirectional Encoder Representations from Transformers</p>
+<p>BERT只采用了Transformer中的Encoder结构</p>
+<p>优点：具有更强的语言表征能力和特征提取能力</p>
+<p>两个预训练任务：</p>
+<ol>
+<li>遮盖语言模型（Masked Language Model），目的：使模型学习到单词在上下文中的分布。做法：随机遮盖掉输入序列中的部分Token，让模型预测被遮盖掉的token。</li>
+<li>下一句预测（Next Sentence Prediction），目的：使模型理解两个句子之间的关系，有助于QA、NLI任务。做法：对于A、B两句话，判断B是不是A的下一句。</li>
+</ol>
+<p>Bert的输入Embedding由三种embedding（Token Embedding、Segment Embedding、Position Embedding</p>
+<h2 id="大语言模型"><a class="header" href="#大语言模型">大语言模型</a></h2>
+<p>大模型基石——特征表示模型</p>
+<p>多头注意力机制、残差链接等深度网络的优化技术</p>
+<p>支持文本、语音、图像等多种模态的特征表示</p>
+<p>ChatGPT：在语言模型的基础上进行对话优化，基础：指令学习（instruction learning）、人类反馈强化学习（HFRL）</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="全文检索与关键词提取.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="文本分类和相似度计算.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="全文检索与关键词提取.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="文本分类和相似度计算.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

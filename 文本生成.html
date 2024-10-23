@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>前言 - Deep Learning</title>
+        <title>文本生成 - Deep Learning</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html" class="active"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded affix "><li class="part-title">NN</li><li class="chapter-item expanded affix "><li class="part-title">NLP</li><li class="chapter-item expanded "><a href="NLP.html"><strong aria-hidden="true">2.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="全文检索与关键词提取.html"><strong aria-hidden="true">2.1.</strong> 全文检索与关键词提取</a></li><li class="chapter-item expanded "><a href="文本表示和语言模型.html"><strong aria-hidden="true">2.2.</strong> 文本表示和语言模型</a></li><li class="chapter-item expanded "><a href="文本分类和相似度计算.html"><strong aria-hidden="true">2.3.</strong> 文本分类和相似度计算</a></li><li class="chapter-item expanded "><a href="文本信息抽取.html"><strong aria-hidden="true">2.4.</strong> 文本信息抽取</a></li><li class="chapter-item expanded "><a href="文本生成.html"><strong aria-hidden="true">2.5.</strong> 文本生成</a></li><li class="chapter-item expanded "><a href="智能问答和对话系统.html"><strong aria-hidden="true">2.6.</strong> 智能问答和对话系统</a></li><li class="chapter-item expanded "><a href="大语言模型.html"><strong aria-hidden="true">2.7.</strong> 大语言模型</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">CV</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded affix "><li class="part-title">NN</li><li class="chapter-item expanded affix "><li class="part-title">NLP</li><li class="chapter-item expanded "><a href="NLP.html"><strong aria-hidden="true">2.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="全文检索与关键词提取.html"><strong aria-hidden="true">2.1.</strong> 全文检索与关键词提取</a></li><li class="chapter-item expanded "><a href="文本表示和语言模型.html"><strong aria-hidden="true">2.2.</strong> 文本表示和语言模型</a></li><li class="chapter-item expanded "><a href="文本分类和相似度计算.html"><strong aria-hidden="true">2.3.</strong> 文本分类和相似度计算</a></li><li class="chapter-item expanded "><a href="文本信息抽取.html"><strong aria-hidden="true">2.4.</strong> 文本信息抽取</a></li><li class="chapter-item expanded "><a href="文本生成.html" class="active"><strong aria-hidden="true">2.5.</strong> 文本生成</a></li><li class="chapter-item expanded "><a href="智能问答和对话系统.html"><strong aria-hidden="true">2.6.</strong> 智能问答和对话系统</a></li><li class="chapter-item expanded "><a href="大语言模型.html"><strong aria-hidden="true">2.7.</strong> 大语言模型</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">CV</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -174,13 +174,87 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="文本生成"><a class="header" href="#文本生成">文本生成</a></h1>
+<ul>
+<li><a href="#%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90%E6%A6%82%E8%BF%B0">文本生成概述</a></li>
+<li><a href="#%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95">文本生成方法</a>
+<ul>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90">基于规则的文本生成</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90">基于统计机器学习的文本生成</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90">基于深度学习的文本生成</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E6%9C%AC%E5%BA%8F%E5%88%97%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8Bbart">文本序列生成模型BART</a>
+<ul>
+<li><a href="#%E9%87%87%E6%A0%B7%E7%AD%96%E7%95%A5">采样策略</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%AF%E6%8E%A7%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90ctg">可控文本生成CTG</a>
+<ul>
+<li><a href="#%E5%8F%AF%E6%8E%A7%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95">可控文本生成方法</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="文本生成概述"><a class="header" href="#文本生成概述">文本生成概述</a></h2>
+<p>什么是自然语言生成？</p>
+<p>自然语言生成是为了达到特定交流目标而生成自然语言文本的过程</p>
+<p>根据给定的需求和规则组织组织信息、生成语法正确且通顺的文本</p>
+<p>文本生成任务是自然语言生成的应用</p>
+<p>常见任务：文本摘要、机器翻译、文本描述、对话生成</p>
+<h2 id="文本生成方法"><a class="header" href="#文本生成方法">文本生成方法</a></h2>
+<h3 id="基于规则的文本生成"><a class="header" href="#基于规则的文本生成">基于规则的文本生成</a></h3>
+<p>代码模板，if-else字符串填充</p>
+<p>优点：速度快，无需复杂的计算；输出结果高度可确定</p>
+<p>缺点：泛化性差，输出缺乏多样性</p>
+<h3 id="基于统计机器学习的文本生成"><a class="header" href="#基于统计机器学习的文本生成">基于统计机器学习的文本生成</a></h3>
+<p>常见的有朴素贝叶斯算法、N-gram</p>
+<p>通过统计语料库总督词语和短语的频率，预测下一个词或短语出现的概率</p>
+<p>用于语音识别、搜索引擎、输入法等实时性要求比较高的场景</p>
+<p>缺点：处理长文本时具有较大的局限性</p>
+<h3 id="基于深度学习的文本生成"><a class="header" href="#基于深度学习的文本生成">基于深度学习的文本生成</a></h3>
+<p>常见工具：</p>
+<ul>
+<li>RNN、LSTM</li>
+<li>BART、GPT、T5</li>
+</ul>
+<p>基于语言模型生成文本</p>
+<p>训练一个语言模型表示语言的潜在空间即统计结构</p>
+<ul>
+<li>输入前面的标记，语言模型能够预测序列中后续的一个或多个标记</li>
+<li>标记通常是单词或字符</li>
+</ul>
+<p>使用训练好的语言模型生成新序列</p>
+<h2 id="文本序列生成模型bart"><a class="header" href="#文本序列生成模型bart">文本序列生成模型BART</a></h2>
+<p>BART：Bidirectional and Auto-Regressive Transformers</p>
+<p>BART通过Transformers中的Encoder-Decoder架构生成文本</p>
+<h3 id="采样策略"><a class="header" href="#采样策略">采样策略</a></h3>
+<p>生成文本时如何选取下一个token</p>
+<p>常用策略：</p>
+<ul>
+<li>贪婪采样：每次选择最优，复杂度低，无法保证全局最优</li>
+<li>随机采样：获得下一个Token的概率分布后，利用温度、top-k（取词表打分最高的前K个词）、top-p（概率之和不超过p）等算法对概率进行修改，再进行随机采样，常用于开放式对话领域提高生成文本的多样性，适合较短的文本。缺点：随机采样容易产生文本语义、逻辑等前后不一致的问题</li>
+<li>束搜索Beam Search：同时生成多句话，取整体概率最优解。能够生成高质量、连贯性强的文本，常用于机器翻译、文本摘要和对话系统</li>
+</ul>
+<h2 id="可控文本生成ctg"><a class="header" href="#可控文本生成ctg">可控文本生成CTG</a></h2>
+<p>可控文本生成和传统自然语言生成的区别：在输入时加入某些控制元素，从而让最终的输出满足满足某种条件</p>
+<p>例如：安装故事线给定关键字生成文章</p>
+<p>要求：生成文章涵盖关键字，关键字按照顺序出现且逻辑通顺</p>
+<h3 id="可控文本生成方法"><a class="header" href="#可控文本生成方法">可控文本生成方法</a></h3>
+<ul>
+<li>微调</li>
+<li>重构</li>
+<li>后处理</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="文本信息抽取.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next prefetch" href="NLP.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="智能问答和对话系统.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -190,8 +264,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="文本信息抽取.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next prefetch" href="NLP.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="智能问答和对话系统.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

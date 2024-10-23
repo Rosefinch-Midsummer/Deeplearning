@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Mdbook Template</title>
+        <title>Deep Learning</title>
         <meta name="robots" content="noindex">
 
 
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded affix "><li class="part-title">NN</li><li class="chapter-item expanded affix "><li class="part-title">NLP</li><li class="chapter-item expanded "><a href="NLP.html"><strong aria-hidden="true">2.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="全文检索与关键词提取.html"><strong aria-hidden="true">2.1.</strong> 全文检索与关键词提取</a></li><li class="chapter-item expanded "><a href="文本表示和语言模型.html"><strong aria-hidden="true">2.2.</strong> 文本表示和语言模型</a></li><li class="chapter-item expanded "><a href="文本分类和相似度计算.html"><strong aria-hidden="true">2.3.</strong> 文本分类和相似度计算</a></li><li class="chapter-item expanded "><a href="文本信息抽取.html"><strong aria-hidden="true">2.4.</strong> 文本信息抽取</a></li><li class="chapter-item expanded "><a href="文本生成.html"><strong aria-hidden="true">2.5.</strong> 文本生成</a></li><li class="chapter-item expanded "><a href="智能问答和对话系统.html"><strong aria-hidden="true">2.6.</strong> 智能问答和对话系统</a></li><li class="chapter-item expanded "><a href="大语言模型.html"><strong aria-hidden="true">2.7.</strong> 大语言模型</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">CV</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -142,7 +142,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Mdbook Template</h1>
+                    <h1 class="menu-title">Deep Learning</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -175,7 +175,1530 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="nlp"><a class="header" href="#nlp">NLP</a></h1>
+<ul>
+<li><a href="NLP.html#%E7%BB%AA%E8%AE%BA">绪论</a>
+<ul>
+<li><a href="NLP.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86">什么是自然语言处理？</a></li>
+<li><a href="NLP.html#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%8F%91%E5%B1%95%E5%8F%B2">自然语言处理发展史</a>
+<ul>
+<li><a href="NLP.html#%E5%88%9D%E6%9C%9F%E9%98%B6%E6%AE%B520%E4%B8%96%E7%BA%AA50-70%E5%B9%B4%E4%BB%A3">初期阶段（20世纪50-70年代）</a></li>
+<li><a href="NLP.html#%E7%9F%A5%E8%AF%86%E9%A9%B1%E5%8A%A8%E9%98%B6%E6%AE%B520%E4%B8%96%E7%BA%AA80-90%E5%B9%B4%E4%BB%A3">知识驱动阶段（20世纪80-90年代）</a></li>
+<li><a href="NLP.html#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E9%98%B6%E6%AE%B520%E4%B8%96%E7%BA%AA90%E5%B9%B4%E4%BB%A3%E6%9C%AB-2000%E5%B9%B4%E4%BB%A3">数据驱动阶段（20世纪90年代末-2000年代）</a></li>
+<li><a href="NLP.html#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%98%B6%E6%AE%B52010%E5%B9%B4%E4%BB%A3%E8%87%B3%E4%BB%8A">深度学习阶段（2010年代至今）</a></li>
+</ul>
+</li>
+<li><a href="NLP.html#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%BA%94%E7%94%A8">自然语言处理应用</a></li>
+<li><a href="NLP.html#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7">自然语言处理常用工具</a></li>
+<li><a href="NLP.html#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B">自然语言处理任务流程</a>
+<ul>
+<li><a href="NLP.html#1-%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86">1. 数据收集</a></li>
+<li><a href="NLP.html#2-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86">2. 数据预处理</a></li>
+<li><a href="NLP.html#3-%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96">3. 特征提取</a></li>
+<li><a href="NLP.html#4-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83">4. 模型训练</a></li>
+<li><a href="NLP.html#5-%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0">5. 模型评估</a></li>
+<li><a href="NLP.html#6-%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8">6. 模型应用</a></li>
+<li><a href="NLP.html#7-%E7%BB%93%E6%9E%9C%E8%A7%A3%E9%87%8A%E4%B8%8E%E4%BD%BF%E7%94%A8">7. 结果解释与使用</a></li>
+<li><a href="NLP.html#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="NLP.html#nltk%E5%85%A5%E9%97%A8">NLTK入门</a>
+<ul>
+<li><a href="NLP.html#%E5%88%86%E8%AF%8D">分词</a></li>
+<li><a href="NLP.html#%E8%AF%8D%E6%80%A7%E6%A0%87%E6%B3%A8">词性标注</a></li>
+<li><a href="NLP.html#%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB">命名实体识别</a></li>
+<li><a href="NLP.html#%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90">句法分析</a></li>
+</ul>
+</li>
+<li><a href="NLP.html#pytorch%E6%90%AD%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">PyTorch搭建神经网络</a></li>
+</ul>
+<h1 id="绪论"><a class="header" href="#绪论">绪论</a></h1>
+<h2 id="什么是自然语言处理"><a class="header" href="#什么是自然语言处理">什么是自然语言处理？</a></h2>
+<p>自然语言处理（Natural Language Processing，简称NLP）是人工智能和计算机科学的一个重要分支，旨在使计算机理解、解释和生成人类自然语言。自然语言处理结合了语言学和计算机科学的方法，通过分析和模拟人类语言的复杂性，开发出能够自动处理和产生自然语言文本的技术。其核心任务包括句法分析、语义理解、文本生成及对话系统等。</p>
+<p>自然语言处理在计算机和语言的交互中起到桥梁的作用，它既涉及到语言的基础规则和结构，如语法、词汇和语义，又考虑语言的实际使用环境和上下文。这种多层面的处理能力使NLP成为AI技术中不可或缺的一环，被广泛应用于许多领域，如信息检索、翻译、情感分析等。</p>
+<h2 id="自然语言处理发展史"><a class="header" href="#自然语言处理发展史">自然语言处理发展史</a></h2>
+<p>自然语言处理的发展历程可以追溯到20世纪的中期，并经历了几个重要阶段：</p>
+<h3 id="初期阶段20世纪50-70年代"><a class="header" href="#初期阶段20世纪50-70年代">初期阶段（20世纪50-70年代）</a></h3>
+<ul>
+<li><strong>早期的概念</strong>：最初的自然语言处理研究受到自动翻译的推动，特别是在冷战时期，美国和苏联分别致力于开发能够自动翻译对方语言的系统。</li>
+<li><strong>形式语言学方法</strong>：研究者采用形式语言学的方法，通过规则和词典进行简单的语法分析。</li>
+</ul>
+<h3 id="知识驱动阶段20世纪80-90年代"><a class="header" href="#知识驱动阶段20世纪80-90年代">知识驱动阶段（20世纪80-90年代）</a></h3>
+<ul>
+<li><strong>专家系统</strong>：基于规则和专家系统的NLP工具在这期间出现，这些系统依赖于预编写的规则和知识库。</li>
+<li><strong>语义网络和语义分析</strong>：研究者开始在语义层面进行探索，包括语义网络和框架语法。</li>
+</ul>
+<h3 id="数据驱动阶段20世纪90年代末-2000年代"><a class="header" href="#数据驱动阶段20世纪90年代末-2000年代">数据驱动阶段（20世纪90年代末-2000年代）</a></h3>
+<ul>
+<li><strong>统计方法的引入</strong>：随着计算机计算能力和数据存储能力的提升，统计方法逐渐引入NLP中，隐藏马尔可夫模型（HMM）和条件随机场（CRF）等成为主要方法。</li>
+<li><strong>语料库和机器学习方法</strong>：大规模语料库的使用加上机器学习算法，使得语言模型更加准确。</li>
+</ul>
+<h3 id="深度学习阶段2010年代至今"><a class="header" href="#深度学习阶段2010年代至今">深度学习阶段（2010年代至今）</a></h3>
+<ul>
+<li><strong>深度学习的革命</strong>：依托于神经网络，特别是深度学习（如RNN、LSTM和Transformer模型）的发展，NLP取得了质的飞跃。</li>
+<li><strong>预训练模型</strong>：诸如BERT、GPT等预训练模型的出现，使得自然语言处理的鲁棒性和准确性大大提高，广泛应用于多种任务。</li>
+</ul>
+<h2 id="自然语言处理应用"><a class="header" href="#自然语言处理应用">自然语言处理应用</a></h2>
+<p>自然语言处理技术在许多领域中都有着广泛的实际应用，以下是一些主要的应用领域：</p>
+<ul>
+<li><strong>机器翻译</strong>：诸如Google Translate和DeepL动能提供高质量的跨语言翻译服务。</li>
+<li><strong>智能客服和对话系统</strong>：使用NLP驱动的客服机器人可以实时理解和响应用户的查询，大大提高了客服效率。</li>
+<li><strong>信息检索及文本分类</strong>：搜索引擎利用NLP技术提高检索的相关性；垃圾邮件过滤等任务依赖于文本的自动分类。</li>
+<li><strong>情感分析</strong>：通过分析文本中的情感倾向，如顾客评价、评论等，帮助企业了解用户情绪。</li>
+<li><strong>语音识别与合成</strong>：通过NLP技术实现语音到文本的转换，反之亦可实现文本到语音的自然化合成。</li>
+</ul>
+<h2 id="自然语言处理常用工具"><a class="header" href="#自然语言处理常用工具">自然语言处理常用工具</a></h2>
+<p>自然语言处理工具和框架是NLP研究和开发的重要基石，以下是一些广受欢迎的工具和框架：</p>
+<ul>
+<li><strong>NLTK（Natural Language Toolkit）</strong>：一个基于Python的全面自然语言处理库，尤其适合教学和原型开发。</li>
+<li><strong>spaCy</strong>：一个工业化的NLP库，提供高效和简洁的API，适用于大型数据处理任务。</li>
+<li><strong>Stanford NLP</strong>：一个Java实现的NLP工具包，包括词性标注、句法分析等常用工具。</li>
+<li><strong>Gensim</strong>：专注于主题建模和文档相似度分析，特别是对大规模语料库的处理。</li>
+<li><strong>Transformers（Hugging Face）</strong>：提供预训练模型，如BERT、GPT-3等，广泛应用于不同的NLP任务。</li>
+</ul>
+<p>这些工具和框架不仅为研究者和开发者提供了强大的功能和灵活性，也推动了自然语言处理的进一步发展和应用。</p>
+<h2 id="自然语言处理任务流程"><a class="header" href="#自然语言处理任务流程">自然语言处理任务流程</a></h2>
+<p>自然语言处理任务流程通常涉及多个步骤和阶段，从原始文本输入到最终的结果输出，每个步骤都有具体的任务和处理。以下是一个典型的自然语言处理任务流程的示例，以情感分析为例：</p>
+<h3 id="1-数据收集"><a class="header" href="#1-数据收集">1. 数据收集</a></h3>
+<p>在任务的初始阶段，所需的数据资料（比如用户评论、社交媒体帖子等）被收集。这些数据通常是非结构化的文本，需要进行后续的处理。</p>
+<h3 id="2-数据预处理"><a class="header" href="#2-数据预处理">2. 数据预处理</a></h3>
+<p>数据预处理是将原始文本数据转换为可用格式的过程，包括以下几个子步骤：</p>
+<ul>
+<li><strong>文本清理</strong>：去除无效字符、标点符号、HTML标签、特殊符号等。</li>
+<li><strong>分词（Tokenization）</strong>：将句子分割成独立的词或词组。</li>
+<li><strong>大小写归一化</strong>：将所有文本转换为统一格式（通常为小写），以减少特征噪声。</li>
+<li><strong>去除停用词</strong>：去除常见但无助于分析的词，如“的”、“是”、“在”等。</li>
+<li><strong>词干提取或词形归并</strong>：将词桶归结为词干或基本形式，比如“running”变为“run”。</li>
+</ul>
+<h3 id="3-特征提取"><a class="header" href="#3-特征提取">3. 特征提取</a></h3>
+<p>预处理后的文本必须转换为模型可用的数值特征：</p>
+<ul>
+<li><strong>词袋模型（Bag of Words）</strong>：统计文本中出现的词频。</li>
+<li><strong>TF-IDF（Term Frequency-Inverse Document Frequency）</strong>：评估词语在文本集中的重要性。</li>
+<li><strong>词嵌入（Word Embeddings）</strong>：如Word2Vec或GloVe，将词语嵌入到低维向量空间中，以捕捉语义。</li>
+</ul>
+<h3 id="4-模型训练"><a class="header" href="#4-模型训练">4. 模型训练</a></h3>
+<p>使用训练数据集来训练情感分析模型。常用的模型有：</p>
+<ul>
+<li><strong>朴素贝叶斯分类</strong>：简单高效的用于文本分类。</li>
+<li><strong>支持向量机（SVM）</strong>：用于处理高级线性分类问题。</li>
+<li><strong>深度学习模型</strong>：如LSTM或者基于Transformer的模型（如BERT），适用于处理更复杂的语言模式。</li>
+</ul>
+<h3 id="5-模型评估"><a class="header" href="#5-模型评估">5. 模型评估</a></h3>
+<p>使用测试数据集进行模型评估，以确定模型性能。常用的评估指标包括精确率（Precision）、召回率（Recall）、F1-score和准确率（Accuracy）。</p>
+<h3 id="6-模型应用"><a class="header" href="#6-模型应用">6. 模型应用</a></h3>
+<p>在模型经过训练和评估后，可以应用在实时或批量情感分析的任务中。例如，自动分析社交媒体帖子或客户评论的情感倾向。</p>
+<h3 id="7-结果解释与使用"><a class="header" href="#7-结果解释与使用">7. 结果解释与使用</a></h3>
+<p>将模型的输出结果（通常是情感标签，如正面、负面、中立）转化为有意义的商业或社会分析，比如改善产品设计、提高客户满意度等。</p>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>自然语言处理的任务流程是一个迭代的过程，涉及从文本数据的收集与清理，到特征提取，模型训练和评估，再到结果的实际应用。每一个步骤都可能需要针对具体问题和数据进行调整，以实现最优秀的性能和结果。</p>
+<h1 id="nltk入门"><a class="header" href="#nltk入门">NLTK入门</a></h1>
+<h2 id="分词"><a class="header" href="#分词">分词</a></h2>
+<pre><code class="language-python">from nltk.tokenize import word_tokenize
+import nltk
+nltk.download('punkt')
+text = "I love Natural Language Processing."
+tokens = word_tokenize(text)
+print(tokens)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+
+['I', 'love', 'Natural', 'Language', 'Processing', '.']
+</code></pre>
+<pre><code class="language-python">import jieba
+from nltk.tokenize import word_tokenize
+
+# 使用jieba进行中文分词
+text = "这个世界真糟糕，我们能去哪里呢？"
+seg_list = jieba.cut(text, cut_all=False)
+seg_list = list(seg_list)
+print(seg_list)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>Building prefix dict from the default dictionary ...
+DEBUG:jieba:Building prefix dict from the default dictionary ...
+Dumping model to file cache /tmp/jieba.cache
+DEBUG:jieba:Dumping model to file cache /tmp/jieba.cache
+Loading model cost 2.437 seconds.
+DEBUG:jieba:Loading model cost 2.437 seconds.
+Prefix dict has been built successfully.
+DEBUG:jieba:Prefix dict has been built successfully.
+['这个', '世界', '真糟糕', '，', '我们', '能', '去', '哪里', '呢', '？']
+</code></pre>
+<h2 id="词性标注"><a class="header" href="#词性标注">词性标注</a></h2>
+<pre><code class="language-python">import nltk
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
+from nltk import pos_tag
+from nltk.tokenize import word_tokenize
+text = "I love Natural Language Processing."
+tokens = word_tokenize(text)
+tagged = pos_tag(tokens)
+print(tagged)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /root/nltk_data...
+[nltk_data]   Unzipping taggers/averaged_perceptron_tagger.zip.
+
+[('I', 'PRP'), ('love', 'VBP'), ('Natural', 'JJ'), ('Language', 'NNP'), ('Processing', 'NNP'), ('.', '.')]
+</code></pre>
+<h2 id="命名实体识别"><a class="header" href="#命名实体识别">命名实体识别</a></h2>
+<pre><code class="language-python">import nltk
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker')
+nltk.download('punkt')
+nltk.download('words')
+from nltk import ne_chunk
+from nltk.tokenize import word_tokenize
+text = "Mark is working at Tsinghua University."
+tokens = word_tokenize(text)
+tagged = pos_tag(tokens)
+ners = ne_chunk(tagged)
+print(ners)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>(S
+  (PERSON Mark/NNP)
+  is/VBZ
+  working/VBG
+  at/IN
+  (ORGANIZATION Tsinghua/NNP University/NNP)
+  ./.)
+
+[nltk_data] Downloading package maxent_ne_chunker to
+[nltk_data]     /root/nltk_data...
+[nltk_data]   Package maxent_ne_chunker is already up-to-date!
+[nltk_data] Downloading package words to /root/nltk_data...
+[nltk_data]   Package words is already up-to-date!
+</code></pre>
+<h2 id="句法分析"><a class="header" href="#句法分析">句法分析</a></h2>
+<pre><code class="language-python">import nltk
+
+sentence = "The cat chases the mouse."
+
+tokens = nltk.word_tokenize(sentence)
+tagged = nltk.pos_tag(tokens)
+grammar = "NP: {&lt;DT&gt;?&lt;JJ&gt;*&lt;NN&gt;}"
+cp = nltk.RegexpParser(grammar)
+result = cp.parse(tagged)
+
+print(result)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>(S (NP The/DT cat/NN) chases/VBZ (NP the/DT mouse/NN) ./.)
+</code></pre>
+<h1 id="pytorch搭建神经网络"><a class="header" href="#pytorch搭建神经网络">PyTorch搭建神经网络</a></h1>
+<pre><code class="language-python">import torch
+from torch import nn
+from torch import optim
+
+x_train = torch.FloatTensor([[1.0], [2.0], [3.0]])
+y_train = torch.FloatTensor([[2.0], [4.0], [6.0]])
+
+class Model(nn.Module):
+  def __init__(self):
+    super(Model, self).__init__()
+    self.linear = nn.Linear(1, 1)
+  def forward(self, x):
+    return self.linear(x)
+
+model = Model()
+criterion = nn.MSELoss()
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+
+for epoch in range(1000):
+  optimizer.zero_grad()
+  outputs = model(x_train)
+  loss = criterion(outputs, y_train)
+  loss.backward()
+  optimizer.step() #更新模型
+
+model.eval()
+with torch.no_grad():
+  prediction = model(torch.FloatTensor([[4.0]]))
+  print("Prediction:", prediction.item())
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>Prediction: 7.960131645202637
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="全文检索与关键词提取"><a class="header" href="#全文检索与关键词提取">全文检索与关键词提取</a></h1>
+<ul>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96">关键词提取</a>
+<ul>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E7%BB%9F%E8%AE%A1%E7%89%B9%E5%BE%81tf-idf">无监督——基于文本统计特征TF-IDF</a></li>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%9F%BA%E4%BA%8E%E8%AF%8D%E5%9B%BEtextrank">无监督——基于词图TextRank</a></li>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%9F%BA%E4%BA%8E%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8Blsalda">无监督——基于主题模型LSA/LDA</a></li>
+</ul>
+</li>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E5%9F%BA%E4%BA%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E7%9A%84%E6%A3%80%E7%B4%A2">基于关键词的检索</a>
+<ul>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2">全文检索</a></li>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%B7%A5%E5%85%B7lucene">全文检索工具：Lucene</a></li>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%B7%A5%E5%85%B7elasticsearch">全文检索工具：ElasticSearch</a></li>
+<li><a href="%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96.html#%E9%A2%86%E5%9F%9F%E5%BA%94%E7%94%A8%E6%9C%AA%E7%99%BB%E5%BD%95%E8%AF%8D">领域应用：未登录词</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="关键词提取"><a class="header" href="#关键词提取">关键词提取</a></h2>
+<p>什么是关键词提取？</p>
+<p>关键词提取是自动提取反映文本主题或内容的词和短语的过程、技术和方法</p>
+<p>常用方法：</p>
+<ul>
+<li>有监督学习：将关键词提取问题转换为判断每个候选关键词是否为关键词的二分类问题，需要已标注关键词的文档集来训练分类模型</li>
+<li>无监督学习：利用特定的方法提取文本中比较重要的候选词，通过对各候选词打分，选择分数最高的若干候选词</li>
+</ul>
+<h3 id="无监督基于文本统计特征tf-idf"><a class="header" href="#无监督基于文本统计特征tf-idf">无监督——基于文本统计特征TF-IDF</a></h3>
+<p>TF-IDF=TF*IDF</p>
+<p>特点：基于统计，简单迅速，但没有考虑词语的语义信息，无法处理一词多义、一义多词</p>
+<pre><code class="language-python">import jieba
+import jieba.posseg
+
+corpus = [
+    "本书是反思及批判“公共知识分子”的社会学名著，也是研究当代思想史的重要参考资料。本书从观念、经济、社会、媒体、法律、战争等6个方面全面陈述了知识分子在社会发展中的舆论导向作用。一系列重大问题上的官方政策的形成都会受到知识分子所塑造的舆论氛围的影响。 当代知识分子不仅影响力胜过以前，而且发挥影响力的方式也大有不同。他们并不是通过塑造执政者的观点或引导执政者的行动来影响事件进程，而是通过影响民主社会中的执政者的行动的各种方式，来塑造公共舆论，最终影响事件进程。无论执政者是否接受知识分子的一般构想或者决策，知识分子的这种影响都会实现。《知识分子与社会》通过大量历史和现实的案例，深入、全面分析了知识分子导致社会变动的背景、诱因和巨大后果。",
+    "托马斯·索维尔（Thomas Sowell），美国当代杰出的经济学家、最具影响力的社会评论家。先后在康奈尔大学、加州大学洛杉矶分校、哥伦比亚大学以及斯坦福大学讲授经济学课程，现为斯坦福大学胡佛研究所公共政策高级研究员。 托马斯·索维尔在经济学和广泛的人文社科领域均有重要建树。他撰写了包括《基础经济学》、《被掩盖的经济真相》、《美国种族简史》在内的30余部著作，多本被翻译成法文、德文、西班牙文和日文出版，其中多本是亚马逊网上书店的超级畅销书。他还在《福布斯》、《财富》、《新闻周刊》、《时代》周刊、《华尔街日报》、《华盛顿邮报》等主流媒体上发表了大量文章，并担任多家著名媒体的专栏作家，广泛讨论各种社会问题。 他获得的荣誉包括由美国企业研究所颁发的、备受尊敬的“博伊尔奖”（Francis Boyer Award）、美国“国家人文科学奖章”、布莱德雷基金奖等。",
+    "大清国什么时候灭亡啊？"
+]
+
+stopwords = ["的"]
+
+def Process():
+  filter_document = []
+  for text in corpus:
+    segment = jieba.posseg.cut(text.strip()) #分词并进行词性标注
+    filter_words = []
+    for word, flag in segment: #单词，词性
+      if flag.startswith('n') is False: #不是名词
+        continue
+      if not word in stopwords and len(word) &gt; 1:
+        filter_words.append(word)
+      filter_document.append(filter_words)
+  return filter_document
+filter_document = Process()
+print(filter_document)
+</code></pre>
+<pre><code class="language-python">#计算TF值
+tf_dict = {}
+for word in text:
+  if word not in tf_dict:
+    tf_dict[word] = 1
+  else:
+    tf_dict[word] += 1
+print(tf_dict)
+for word in tf_dict:
+  tf_dict[word] = tf_dict[word] / len(text)
+print(tf_dict)
+</code></pre>
+<pre><code class="language-python">#依次统计每个单词的IDF值
+import math
+idf_dict = {}
+for text in filter_document:
+  for word in set(text):
+    if word not in idf_dict.keys():
+      idf_dict[word] = 1
+    else:
+      idf_dict[word] += 1
+#计算IDF
+for word in idf_dict.keys():
+  idf_dict[word] = math.log(len(filter_document) / (idf_dict[word] + 1))
+print(idf_dict)
+</code></pre>
+<pre><code class="language-python">#计算TF-IDF
+tf_idf_dict = {}
+for word in text:
+  if word not in idf_dict:
+    idf_dict[word] = 0
+  tf_idf_dict[word] = tf_dict[word] * idf_dict[word]
+
+</code></pre>
+<pre><code class="language-python"># 降序排序
+sorted_tf_idf = sorted(tf_idf_dict.items(), key=lambda x:x[1], reverse=True)
+print(sorted_tf_idf)
+</code></pre>
+<pre><code class="language-python">print('\n第{}个文本的关键词是:{}\n'.format(1, sorted_tf_idf[0][0]))
+</code></pre>
+<h3 id="无监督基于词图textrank"><a class="header" href="#无监督基于词图textrank">无监督——基于词图TextRank</a></h3>
+<p>TextRank算法由网页重要性排序的PageRank算法改进而来</p>
+<p>TextRank算法是基于图的用于文本摘要和关键词提取的算法，利用文档内部词语间的共现信息进行抽取。</p>
+<p>用图模型表示文本，节点是文本中的单词或短语，边是单词之间的关系，通过迭代更新节点的权重来计算每个结点的重要程度。</p>
+<pre><code class="language-python">import jieba
+import jieba.posseg
+
+corpus = [
+    "本书是反思及批判“公共知识分子”的社会学名著，也是研究当代思想史的重要参考资料。本书从观念、经济、社会、媒体、法律、战争等6个方面全面陈述了知识分子在社会发展中的舆论导向作用。一系列重大问题上的官方政策的形成都会受到知识分子所塑造的舆论氛围的影响。 当代知识分子不仅影响力胜过以前，而且发挥影响力的方式也大有不同。他们并不是通过塑造执政者的观点或引导执政者的行动来影响事件进程，而是通过影响民主社会中的执政者的行动的各种方式，来塑造公共舆论，最终影响事件进程。无论执政者是否接受知识分子的一般构想或者决策，知识分子的这种影响都会实现。《知识分子与社会》通过大量历史和现实的案例，深入、全面分析了知识分子导致社会变动的背景、诱因和巨大后果。",
+    "托马斯·索维尔（Thomas Sowell），美国当代杰出的经济学家、最具影响力的社会评论家。先后在康奈尔大学、加州大学洛杉矶分校、哥伦比亚大学以及斯坦福大学讲授经济学课程，现为斯坦福大学胡佛研究所公共政策高级研究员。 托马斯·索维尔在经济学和广泛的人文社科领域均有重要建树。他撰写了包括《基础经济学》、《被掩盖的经济真相》、《美国种族简史》在内的30余部著作，多本被翻译成法文、德文、西班牙文和日文出版，其中多本是亚马逊网上书店的超级畅销书。他还在《福布斯》、《财富》、《新闻周刊》、《时代》周刊、《华尔街日报》、《华盛顿邮报》等主流媒体上发表了大量文章，并担任多家著名媒体的专栏作家，广泛讨论各种社会问题。 他获得的荣誉包括由美国企业研究所颁发的、备受尊敬的“博伊尔奖”（Francis Boyer Award）、美国“国家人文科学奖章”、布莱德雷基金奖等。",
+    "美国总统特朗普不是一个大坏蛋"
+]
+stopwords = ["的"]
+
+def Process():
+  filter_document = []
+  for text in corpus:
+    segment = jieba.posseg.cut(text.strip()) #分词并进行词性标注
+    filter_words = []
+    for word, flag in segment: #单词，词性
+      if flag.startswith('n') is False:
+        continue
+      if not word in stopwords and len(word) &gt; 1:
+        filter_words.append(word)
+    filter_document.append(filter_words)
+  return filter_document
+filter_document = Process()
+print(filter_document)
+</code></pre>
+<pre><code class="language-python">from collections import defaultdict
+
+# 构建共现矩阵
+def build_cooccurrence_matrix(sentences):
+  cooccur_matrix = defaultdict(int)
+  for sentence in sentences:
+    #对每个文本，统计两两单词的共现次数
+    for i, word1 in enumerate(sentence):
+      for j, word2 in enumerate(sentence):
+        if i != j:
+          cooccur_matrix[(word1, word2)] += 1
+  return cooccur_matrix
+
+</code></pre>
+<pre><code class="language-python">#迭代更新TextRank分数
+def calculate_textrank_scores(cooccur_matrix, max_iter=100, d=0.85):
+  #max_iter:迭代次数
+  #d:阻尼系数
+  word_scores = defaultdict(float)
+  word_weights = defaultdict(float)
+
+  for (word1, word2), cooccur_count in cooccur_matrix.items():
+    word_weights[word1] += cooccur_count
+    word_weights[word2] += cooccur_count
+
+  #初始化每个单词的权重
+  for word in word_weights:
+    word_scores[word] = 1.0
+
+  #开始迭代
+  for _ in range(max_iter):
+    new_word_scores = defaultdict(float)
+    for word1, word2 in cooccur_matrix:
+      if word1 == word2:
+        continue
+      new_word_scores[word2] += cooccur_matrix[(word1, word2)] / word_weights[word1] * word_scores[word1]
+    #更新每个单词的权重
+    for word in word_scores:
+      new_word_scores[word] = (1-d) + d*new_word_scores[word]
+    word_scores = new_word_scores
+  return word_scores
+</code></pre>
+<pre><code class="language-python">#对每个文本得到更新后的每个单词的权重，输出Top3的关键词
+for index, text in enumerate(filter_document):
+  cooccur_matrix = build_cooccurrence_matrix([text])
+  word_scores = calculate_textrank_scores(cooccur_matrix)
+  sorted_scores = sorted(word_scores.items(), key=lambda x:x[1], reverse=True)
+  keywords = [word for word, score in sorted_scores]
+  print('\n第{}个文本的关键词是:{}\n'.format(index, keywords[index]))
+
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>第0个文本的关键词是:知识分子
+
+第1个文本的关键词是:经济学
+
+第2个文本的关键词是:大坏蛋
+</code></pre>
+<h3 id="无监督基于主题模型lsalda"><a class="header" href="#无监督基于主题模型lsalda">无监督——基于主题模型LSA/LDA</a></h3>
+<p>基本思想：利用主题模型中的主题分布性质进行关键词提取</p>
+<p>假设文档生成过程：以一定概率选取某个主题，再以一定的概率选取该主题下的某个单词，不断重复这两个步骤，生成文档</p>
+<pre><code class="language-python">import jieba
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
+
+# 自定义中文停用词列表
+#stopwords = ['的', '了', '是', '我', '你', '他']  # 添加你认为需要过滤的停用词
+
+# 对中文文本进行分词处理
+#file_contents_cut = [" ".join([word for word in jieba.lcut(doc) if word not in stopwords]) for doc in file_contents]
+file_contents_cut = file_contents
+#print(file_contents_cut)
+# 将文档集字符串转换为向量表示，添加min_df参数来解决空词汇表问题
+vectorizer = CountVectorizer(min_df=2)
+X = vectorizer.fit_transform(file_contents_cut.split('\n'))
+
+# 使用LDA算法进行主题分析
+lda = LatentDirichletAllocation(n_components=5, random_state=0)  # 假设有5个主题
+lda.fit(X)
+
+# 获取主题-词分布
+topic_word_distributions = lda.components_
+
+# 输出每个主题的前10个主题词
+n_top_words = 10
+feature_names = vectorizer.get_feature_names_out()
+for topic_idx, topic in enumerate(topic_word_distributions):
+    top_features_ind = topic.argsort()[:-n_top_words - 1:-1]
+    top_features = [feature_names[i] for i in top_features_ind]
+    print(f"Topic {topic_idx}: {' '.join(top_features)}")
+</code></pre>
+<h2 id="基于关键词的检索"><a class="header" href="#基于关键词的检索">基于关键词的检索</a></h2>
+<h3 id="全文检索"><a class="header" href="#全文检索">全文检索</a></h3>
+<p>倒排索引Inverted Index：words to document</p>
+<p>基本原理：通过建立倒排索引，将文本数据中的单词映射到包含这些单词的文档或记录，从而实现高效的文本检索。</p>
+<p>应用场景：数据量大、数据结构不固定的数据采用全文检索搜索，如搜索引擎、电商网站搜索等。</p>
+<p>全文检索具体步骤：</p>
+<ol>
+<li>文本分词、去除停用词</li>
+<li>创建单词词典</li>
+<li>为每个单词创建一个倒排列表，包含该单词所在的文档及出现的位置（离线过程）</li>
+<li>当用户提交查询时，将查询词与倒排索引匹配，找到包含查询词的文档（在线过程）</li>
+<li>根据相关性对文档进行排序，并返回给用户</li>
+</ol>
+<h3 id="全文检索工具lucene"><a class="header" href="#全文检索工具lucene">全文检索工具：Lucene</a></h3>
+<p>应用场景：直接通过代码调用接口，实现文本索引和检索；适用于数据索引量不大</p>
+<p>使用：</p>
+<ol>
+<li>创建索引：分词、建立词典表和倒排索引，写入索引库</li>
+<li>查询索引：对查询语句进行词法语法分析，搜索索引，对搜索结果进行排序</li>
+</ol>
+<h3 id="全文检索工具elasticsearch"><a class="header" href="#全文检索工具elasticsearch">全文检索工具：ElasticSearch</a></h3>
+<p>ElasticSearch是Lucene的封装，提供了REST API的访问接口</p>
+<p>核心是一个分布式文档存储、检索和分析系统</p>
+<p>特点：</p>
+<ul>
+<li>分布式性能</li>
+<li>实时搜索</li>
+<li>多样化查询功能：全文搜索、聚合、过滤、排序、分词和模糊搜索</li>
+<li>强大的数据分析</li>
+</ul>
+<p>开发视角：</p>
+<ul>
+<li>文档（Document）：可搜索的最小单元</li>
+<li>字段（Field）：文档里的每条信息，类似于数据库中的列</li>
+<li>索引（Index）：相同类型的文档集合</li>
+</ul>
+<h3 id="领域应用未登录词"><a class="header" href="#领域应用未登录词">领域应用：未登录词</a></h3>
+<p>未登录词：已有的词表中没有收录的词或已有的训练语料中未曾出现过的词</p>
+<p>识别未登录词</p>
+<p>如何断定n-gram的短语是个词语？</p>
+<p>短语左右搭配丰富（信息熵），短语内部成分搭配固定（互信息）</p>
+<p>信息熵：某条信息中所含的信息量</p>
+<p>互信息：两个离散型随机变量X与Y相关程度的度量。互信息越大，两个随机变量的关联就越密切，同时发生的可能性就越大。</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="文本表示和语言模型"><a class="header" href="#文本表示和语言模型">文本表示和语言模型</a></h1>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA">文本表示</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E6%96%87%E6%9C%AC%E5%90%91%E9%87%8F%E5%8C%96">文本向量化</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B%E7%8B%AC%E7%83%AD%E7%BC%96%E7%A0%81">词袋模型：独热编码</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E8%AF%8D%E5%B5%8C%E5%85%A5%E8%AF%8D%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA">词嵌入（词向量）表示</a></li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">语言模型</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E9%9D%99%E6%80%81%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">静态语言模型</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#word2vec%E6%A8%A1%E5%9E%8B">Word2Vec模型</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#glove%E6%A8%A1%E5%9E%8B">GloVe模型</a></li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">预训练语言模型</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#transformer%E6%A8%A1%E5%9E%8B">Transformer模型</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#bert%E6%A8%A1%E5%9E%8B">BERT模型</a></li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.html#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B">大语言模型</a></li>
+</ul>
+<h2 id="文本表示"><a class="header" href="#文本表示">文本表示</a></h2>
+<h3 id="文本向量化"><a class="header" href="#文本向量化">文本向量化</a></h3>
+<p>文本数据：典型的序列数据、字符序列或单词序列</p>
+<p>文本向量化：将文本数据转化为数值张量，尽可能保留语法、语义信息</p>
+<p>目的：将文本表示为一系列能够表达文本语义的向量，方便后续处理</p>
+<p>方法：</p>
+<ul>
+<li>按词切分，将每个单词转换为一个向量</li>
+<li>按字符切分，将每个字符转换为一个向量</li>
+<li>按n-gram切分，将每个n-gram转换为一个向量</li>
+</ul>
+<p>n-gram：多个连续单词或字符的集合，注意n-gram之间可重叠</p>
+<p>Token：单词、字符、n-gram</p>
+<p>中文需要专门的分词工具</p>
+<p>文本表示编码方式：独热编码、词向量（词嵌入）编码</p>
+<h3 id="词袋模型独热编码"><a class="header" href="#词袋模型独热编码">词袋模型：独热编码</a></h3>
+<p>基本思想：将一段文本仅看作一些独立的词语的集合，忽略文本的词序、语法和句法</p>
+<p>词袋模型统计在一个句子中每个单词出现的情况，可以是one-hot编码（是否出现）、TF编码（次数）、TF-IDF编码（TF-IDF值）</p>
+<p>特点：字典中的字没有特定的顺序，句子的整体结构被抛弃</p>
+<p>构建过程：</p>
+<ol>
+<li>对文档集中的所有文本进行分词</li>
+<li>构建整个文档集的词典，假设词典大小为N</li>
+<li>为每条文本生成长度为N的一维向量，向量中的每一维的值为字典中对应序号的词在该文本中出现的次数</li>
+</ol>
+<p>优点：方便分类器处理离散数据、在一定程度上起到了扩充特征的作用</p>
+<p>缺点：没有考虑词序、忽略了词与词之间的关系，得到的特征表示是离散稀疏的</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+import jieba
+
+corpus = [
+    "我是中国人，我爱中国",
+    "我是上海人",
+    "我住在松江大学城"
+]
+
+split_corpus = []
+
+for text in corpus:
+  new_text = " ".join(jieba.lcut(text))
+  split_corpus.append(new_text)
+print(split_corpus)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>['我 是 中国 人 ， 我 爱 中国', '我 是 上海 人', '我 住 在 松江 大学城']
+</code></pre>
+<pre><code class="language-python"># 生成词袋
+cv = CountVectorizer()
+cv_fit = cv.fit_transform(split_corpus)
+print(cv.get_feature_names_out()) #显示特征列表
+print(cv_fit.toarray()) #显示特征向量
+</code></pre>
+<p>输出结果（词语）如下所示：</p>
+<pre><code>['上海' '中国' '大学城' '松江']
+[[0 2 0 0]
+ [1 0 0 0]
+ [0 0 1 1]]
+</code></pre>
+<pre><code class="language-python"># 生成词袋
+cv = CountVectorizer(token_pattern=r"(?u)\b\w+\b")
+cv_fit = cv.fit_transform(split_corpus)
+print(cv.get_feature_names_out()) #显示特征列表
+print(cv_fit.toarray()) #显示特征向量
+</code></pre>
+<p>输出结果（字词）如下所示：</p>
+<pre><code>['上海' '中国' '人' '住' '在' '大学城' '我' '是' '松江' '爱']
+[[0 2 1 0 0 0 2 1 0 1]
+ [1 0 1 0 0 0 1 1 0 0]
+ [0 0 0 1 1 1 1 0 1 0]]
+</code></pre>
+<p>方法一：先向量化，再使用TF-IDF</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfTransformer
+
+tfidf_transformer = TfidfTransformer()
+tfidf_fit = tfidf_transformer.fit_transform(cv_fit)
+print(tfidf_fit.toarray())
+</code></pre>
+<p>方法二：直接使用TfidfVectorizer计算</p>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = TfidfVectorizer(token_pattern=r"(?u)\b\w+\b")
+tfidf_fit = tfidf.fit_transform(split_corpus)
+print(tfidf_fit.toarray())
+</code></pre>
+<h3 id="词嵌入词向量表示"><a class="header" href="#词嵌入词向量表示">词嵌入（词向量）表示</a></h3>
+<p>定义：通过大量语料的训练，学习单词之间的关系，将每个词都映射到一个较短的词向量</p>
+<p>词向量特征：低维、密集、训练得到</p>
+<p>构建过程：</p>
+<ol>
+<li>对文档集中的所有文本进行分词</li>
+<li>构建整个文档集的词典，每个词用一个低维向量表示</li>
+<li>为每条文本生成一个二维数组，数组中的每一维的值为字典中对应序号的词的一维向量</li>
+</ol>
+<h2 id="语言模型"><a class="header" href="#语言模型">语言模型</a></h2>
+<p>A language model is a probability distribution over sequence of works. ----Dan Jurafsky</p>
+<p>给定词典V，能够计算出任意单词序列w1,w2，……，wn是一句话的概率</p>
+<p>n-gram模型：第n个词的出现只与前n-1个词相关，与其他词无关</p>
+<h2 id="静态语言模型"><a class="header" href="#静态语言模型">静态语言模型</a></h2>
+<p>语言模型认为语句中下一个单词的出现与其前面的单词有关，用其前面的单词预测下一个单词</p>
+<h3 id="word2vec模型"><a class="header" href="#word2vec模型">Word2Vec模型</a></h3>
+<p>语句中的单词只与其相近的单词有关，用其前面的单词预测下一个单词</p>
+<p>主要分为两种类型：</p>
+<ul>
+<li>CBOW：根据周围词预测中心词，输入：某一个特征值的上下文相关的词对应的词向量，输出：该特征词的词向量</li>
+<li>Skip-gram：根据中心词预测周围词，输入：特定的词向量，输出：特定词对应的上下文词向量</li>
+</ul>
+<p>基本思想：从大量文本语料中通过无监督方式学习语义知识的简单神经网络</p>
+<p>作用：生成上下文语义相关的词向量</p>
+<p>模型结构：输入层、隐藏层、输出层</p>
+<p>输入：每个单词的One-hot编码</p>
+<p>输出：词汇表中每个单词的概率</p>
+<p>优点：</p>
+<ol>
+<li>通过大量语料进行无监督训练得到词向量，不需要人工参与</li>
+<li>考虑了单词之间的上下文关系</li>
+<li>训练得到的词向量可以计算单词之间的相似度、语义关系</li>
+<li>训练得到的词向量维度较低，可以避免维度灾难</li>
+<li>通用性强</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>词向量的语义受训练语料的影响</li>
+<li>训练得到的词向量是静态的，词与向量一对一固定，无法更换，无法解决一词多义的问题</li>
+<li>只考虑指定上下文窗口内的信息，没有考虑全局的信息</li>
+<li>无法针对特定任务进行动态优化</li>
+</ol>
+<h3 id="glove模型"><a class="header" href="#glove模型">GloVe模型</a></h3>
+<p>改进Word2Vec，利用语料库的全局信息表示词向量</p>
+<p>基本思想：考虑单词与单词之间的共现信息，通过构建词共现矩阵来学习单词的词向量</p>
+<p>共现矩阵X，其中Xij表示语料库中单词i和单词j共同出现在一个窗口中的次数</p>
+<p>优点：考虑了单词之间的全局信息</p>
+<p>缺点：</p>
+<ol>
+<li>训练得到的词向量仍然是静态的，词与向量一对一固定，无法更改，无法解决一词多义的问题</li>
+<li>无法针对特定任务进行动态优化</li>
+</ol>
+<h2 id="预训练语言模型"><a class="header" href="#预训练语言模型">预训练语言模型</a></h2>
+<h3 id="transformer模型"><a class="header" href="#transformer模型">Transformer模型</a></h3>
+<p>每层encoder结构：一个自注意力层+1个前向神经网络层</p>
+<p>每层decoder结构：一个自注意力层+1个encoder-decoder注意力层+1个前向神经网络层</p>
+<h3 id="bert模型"><a class="header" href="#bert模型">BERT模型</a></h3>
+<p>全称：Bidirectional Encoder Representations from Transformers</p>
+<p>BERT只采用了Transformer中的Encoder结构</p>
+<p>优点：具有更强的语言表征能力和特征提取能力</p>
+<p>两个预训练任务：</p>
+<ol>
+<li>遮盖语言模型（Masked Language Model），目的：使模型学习到单词在上下文中的分布。做法：随机遮盖掉输入序列中的部分Token，让模型预测被遮盖掉的token。</li>
+<li>下一句预测（Next Sentence Prediction），目的：使模型理解两个句子之间的关系，有助于QA、NLI任务。做法：对于A、B两句话，判断B是不是A的下一句。</li>
+</ol>
+<p>Bert的输入Embedding由三种embedding（Token Embedding、Segment Embedding、Position Embedding</p>
+<h2 id="大语言模型"><a class="header" href="#大语言模型">大语言模型</a></h2>
+<p>大模型基石——特征表示模型</p>
+<p>多头注意力机制、残差链接等深度网络的优化技术</p>
+<p>支持文本、语音、图像等多种模态的特征表示</p>
+<p>ChatGPT：在语言模型的基础上进行对话优化，基础：指令学习（instruction learning）、人类反馈强化学习（HFRL）</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="文本分类和相似度计算"><a class="header" href="#文本分类和相似度计算">文本分类和相似度计算</a></h1>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%BA%A6%E9%87%8F%E4%BB%BB%E5%8A%A1">文本相似度（度量任务）</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95">文本相似度计算方法</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%97%A0%E7%9B%91%E7%9D%A3%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95tf-idfcosine_similarity">无监督计算方法：TF-IDF+cosine_similarity</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%97%A0%E7%9B%91%E7%9D%A3%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95bm25">无监督计算方法——BM25</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%97%A0%E7%9B%91%E7%9D%A3%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95bert-whitening">无监督计算方法——BERT Whitening</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%9C%89%E7%9B%91%E7%9D%A3%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E5%8D%95%E5%A1%94%E6%A8%A1%E5%9E%8B%E6%85%A2%E5%87%86%E7%A1%AE%E7%8E%87%E9%AB%98">有监督计算方法——单塔模型（慢，准确率高）</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%9C%89%E7%9B%91%E7%9D%A3%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E5%8F%8C%E5%A1%94%E6%A8%A1%E5%9E%8B%E5%BF%AB%E5%87%86%E7%A1%AE%E7%8E%87%E4%BD%8E">有监督计算方法——双塔模型（快，准确率低）</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#word2vec%E8%AE%A1%E7%AE%97%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6">Word2Vec计算文本相似度</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#glove%E8%AE%A1%E7%AE%97%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6">GloVe计算文本相似度</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1">文本分类（分类任务）</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E5%9F%BA%E4%BA%8E%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB">基于朴素贝叶斯的文本分类</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E5%AE%9E%E6%88%98%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB">实战：朴素贝叶斯新闻文本分类</a></li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#bert-%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB">BERT 文本分类</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E5%92%8C%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97.html#%E5%AE%9E%E4%BE%8Bbert%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB">实例：BERT新闻文本分类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="文本相似度度量任务"><a class="header" href="#文本相似度度量任务">文本相似度（度量任务）</a></h1>
+<p>定义：衡量两个文本之间的相似程度。通常用数值度量，数值越高则相似度越高</p>
+<h2 id="文本相似度计算方法"><a class="header" href="#文本相似度计算方法">文本相似度计算方法</a></h2>
+<p>首先要使用TF-IDF或词向量获取文本特征表示，然后才能计算相似度</p>
+<p>方式：</p>
+<ul>
+<li>无监督相似度计算：度量计算，欧氏距离、余弦距离（1-夹角余弦值）、Jacard相似度（两个集合相似性）、BM25</li>
+<li>有监督相似度计算：MLP</li>
+</ul>
+<h3 id="无监督计算方法tf-idfcosine_similarity"><a class="header" href="#无监督计算方法tf-idfcosine_similarity">无监督计算方法：TF-IDF+cosine_similarity</a></h3>
+<pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+documents = [
+    "恩尼格玛机是二战时期纳粹德国使用的加密机器，后被英国破译，参与破译的人员有被称为计算机科学之父、人工智能之父的图灵。",
+    "恩尼格玛机使用的加密方式本质上还是移位和替代，只不过因为密码表种类极多，破解难度高，同时加密解密机器化，使用便捷，因而在二战时期得以使用。",
+    "图灵机是计算机科学的一个重要概念，与恩尼格玛机关系密切。",
+    "二战时期的科技发展与恩尼格玛机的破解密不可分。",
+    "加密技术在信息安全中起着至关重要的作用，恩尼格玛机的历史是一个经典案例。"
+]
+
+# 1. 计算 TF-IDF 特征
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform(documents)
+
+# 2. 计算余弦相似度
+similarity_matrix = cosine_similarity(tfidf_matrix)
+
+# 3. 输出相似度矩阵
+print("文档之间的相似度矩阵：")
+print(similarity_matrix)
+</code></pre>
+<h3 id="无监督计算方法bm25"><a class="header" href="#无监督计算方法bm25">无监督计算方法——BM25</a></h3>
+<p>优点：相比于TF-IDF，BM25考虑了文档长度。通过参数调整，BM25可以适应不同领域</p>
+<p>缺点：只有统计信息，没有语义信息</p>
+<p>gensim包中的BM25算法已经无法正常使用，这里需要执行<code>pip install rank-bm25</code></p>
+<pre><code class="language-python">from rank_bm25 import BM25Okapi
+
+documents = [
+    "恩尼格玛机是二战时期纳粹德国使用的加密机器，后被英国破译，参与破译的人员有被称为计算机科学之父、人工智能之父的图灵。",
+    "恩尼格玛机使用的加密方式本质上还是移位和替代，只不过因为密码表种类极多，破解难度高，同时加密解密机器化，使用便捷，因而在二战时期得以使用。",
+    "图灵机是计算机科学的一个重要概念，与恩尼格玛机关系密切。",
+    "二战时期的科技发展与恩尼格玛机的破解密不可分。",
+    "加密技术在信息安全中起着至关重要的作用，恩尼格玛机的历史是一个经典案例。"
+]
+
+# 1. 分词
+tokenized_documents = [doc.split() for doc in documents]
+
+# 2. 计算 BM25 值
+bm25 = BM25Okapi(tokenized_documents)
+
+# 3. 计算相似度
+similarity_matrix = []
+for i in range(len(tokenized_documents)):
+    scores = bm25.get_scores(tokenized_documents[i])
+    similarity_matrix.append(scores)
+
+# 4. 输出相似度矩阵
+print("文档之间的相似度矩阵：")
+for i, scores in enumerate(similarity_matrix):
+    print(f"文档 {i}: {scores}")
+</code></pre>
+<h3 id="无监督计算方法bert-whitening"><a class="header" href="#无监督计算方法bert-whitening">无监督计算方法——BERT Whitening</a></h3>
+<p>Bert编码输出得到的句子级别文本向量（【cls】标签），可以直接用来计算文本相似度，但效果比较差</p>
+<p>白化Whitening：把Bert的输出向量转换为标准正态分布</p>
+<p>两份文本之间的相似度计算：</p>
+<pre><code class="language-python">from transformers import BertTokenizer, BertModel
+import torch
+from sklearn.metrics.pairwise import cosine_similarity
+
+# 两个文档
+documents = [
+    "恩尼格玛机是二战时期纳粹德国使用的加密机器，后被英国破译，参与破译的人员有被称为计算机科学之父、人工智能之父的图灵。",
+    "恩尼格玛机使用的加密方式本质上还是移位和替代，只不过因为密码表种类极多，破解难度高，同时加密解密机器化，使用便捷，因而在二战时期得以使用。",
+]
+
+# 加载预训练的Bert模型和tokenizer
+tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
+model = BertModel.from_pretrained('bert-base-chinese')
+
+# 分词和编码
+inputs = tokenizer(documents, return_tensors='pt', padding=True, truncation=True, max_length=128)
+
+# 获取Bert模型的输出
+with torch.no_grad():
+    outputs = model(**inputs)
+
+# 取出文本的embedding表示
+embeddings = outputs.last_hidden_state
+
+# 计算两个文档之间的相似度
+similarity = cosine_similarity(embeddings[0].mean(dim=0).reshape(1, -1), embeddings[1].mean(dim=0).reshape(1, -1))
+
+# 输出相似度
+print("两个文档之间的相似度为：", similarity)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>两个文档之间的相似度为： [[0.9393373]]
+</code></pre>
+<p>计算多份文本的相似度矩阵需要执行<code>pip install sentence_transformers</code></p>
+<pre><code class="language-python">from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# 下载Bert模型
+model = SentenceTransformer('distilbert-base-nli-mean-tokens')
+
+# 5段短文本
+text1 = "恩尼格玛机是二战时期纳粹德国使用的加密机器，后被英国破译，参与破译的人员有被称为计算机科学之父、人工智能之父的图灵。"
+text2 = "恩尼格玛机使用的加密方式本质上还是移位和替代，只不过因为密码表种类极多，破解难度高，同时加密解密机器化，使用便捷，因而在二战时期得以使用。"
+text3 = "图灵机是计算机科学的一个重要概念，与恩尼格玛机关系密切。"
+text4 = "二战时期的科技发展与恩尼格玛机的破解密不可分。"
+text5 = "加密技术在信息安全中起着至关重要的作用，恩尼格玛机的历史是一个经典案例。"
+
+# 使用Bert模型计算文本之间的相似度
+# get the embeddings
+embeddings = model.encode([text1, text2, text3, text4, text5])
+
+# calculate the cosine similarity between the embeddings
+similarity_matrix = cosine_similarity(embeddings)
+print(similarity_matrix)
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>[[1.0000005  0.9500179  0.9116019  0.90483916 0.93870497]
+ [0.9500179  1.0000001  0.9029109  0.8839184  0.9437463 ]
+ [0.9116019  0.9029109  1.0000002  0.9155248  0.93057024]
+ [0.90483916 0.8839184  0.9155248  1.         0.93250304]
+ [0.93870497 0.9437463  0.93057024 0.93250304 1.0000001 ]]
+</code></pre>
+<h3 id="有监督计算方法单塔模型慢准确率高"><a class="header" href="#有监督计算方法单塔模型慢准确率高">有监督计算方法——单塔模型（慢，准确率高）</a></h3>
+<p>只进行一次模型计算</p>
+<p>使用过程：</p>
+<ol>
+<li>将待匹配的两个文本使用Bert中【SEP】特殊符号拼接</li>
+<li>输入进Bert编码，学习两个文本之间的语义关系</li>
+<li>输出【CLS】向量表示</li>
+<li>添加全连接层进行二分类，0表示不相似，1表示相似</li>
+</ol>
+<p>优点：可以学到句子之间的深层语义关系，准确率高</p>
+<p>缺点：拼接后文本长度可能过长，编码速度慢。需要两两拼接文本，若文本数量过多，该过程非常耗时</p>
+<h3 id="有监督计算方法双塔模型快准确率低"><a class="header" href="#有监督计算方法双塔模型快准确率低">有监督计算方法——双塔模型（快，准确率低）</a></h3>
+<p>两次模型计算，即两个文本分布计算一次</p>
+<p>使用过程：</p>
+<ol>
+<li>将两个文本单独输入Bert编码，获得各自的【CLS】向量表示</li>
+<li>通过度量方法（余弦距离、MLP层）等计算相似度</li>
+</ol>
+<p>优点：每个文本都只需编码一次，计算相似度时可以直接用。不必多次编码，效率高</p>
+<p>缺点：两个文本之间缺乏深层的语义交互</p>
+<p>两大模型：</p>
+<ol>
+<li>DSSM：Bert编码+余弦相似度计算文本相似性</li>
+<li>Sentence Transformer：Bert编码+Softmax层计算文本相似性</li>
+</ol>
+<h3 id="word2vec计算文本相似度"><a class="header" href="#word2vec计算文本相似度">Word2Vec计算文本相似度</a></h3>
+<pre><code class="language-python">from gensim.models import Word2Vec
+from gensim.models import KeyedVectors
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+
+# 导入文本
+text1 = file_contents
+text2 = text_content
+
+# 使用gensim内置的Word2Vec工具训练Word2Vec模型
+sentences = [text1.split(), text2.split()]  # 将文本切分为单词列表
+model = Word2Vec(sentences, vector_size=100, window=5, min_count=1, sg=0)  # 训练Word2Vec模型
+
+# 计算均值词向量
+def get_vector_mean(text, model):
+    words = text.split()
+    vectors = [model.wv[word] for word in words if word in model.wv]
+    if len(vectors) == 0:
+        return np.zeros(model.vector_size)
+    return np.mean(vectors, axis=0)
+
+mean_vector1_w2v = get_vector_mean(text1, model)
+mean_vector2_w2v = get_vector_mean(text2, model)
+
+# 计算相似度
+similarity_w2v = cosine_similarity([mean_vector1_w2v], [mean_vector2_w2v])[0][0]
+
+# 输出结果
+print(f"Word2Vec Similarity: {similarity_w2v:.4f}")
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>Word2Vec Similarity: 0.8934
+</code></pre>
+<h3 id="glove计算文本相似度"><a class="header" href="#glove计算文本相似度">GloVe计算文本相似度</a></h3>
+<p>引例</p>
+<pre><code class="language-python">import gensim.downloader as api
+model = api.load('glove-wiki-gigaword-100')
+
+print(model["bread"])
+print(model.most_similar("usa"))
+print(model.most_similar(negative="banana"))
+</code></pre>
+<p>计算文本相似度</p>
+<pre><code class="language-python">import numpy as np
+from gensim.models import KeyedVectors
+
+# 加载 GloVe 词向量
+def load_glove_model(glove_model_path, encoding='utf-8'):
+    # 打开GloVe模型文件并读取内容
+    with open(glove_model_path, 'r', encoding=encoding) as file:
+        model = {}
+        for line in file:
+            split_line = line.strip().split(' ')
+            word = split_line[0]
+            embedding = [float(val) for val in split_line[1:]]
+            model[word] = embedding
+    return model
+
+# 然后在main()函数中使用更新后的load_glove_model函数
+#glove_model = load_glove_model(glove_model_path, encoding='utf-8')
+def load_glove_model2(glove_file):
+    """
+    加载 GloVe 词向量
+    :param glove_file: GloVe 文件路径
+    :return: 词向量字典
+    """
+    glove_model = {}
+    with open(glove_file, 'r', encoding='utf-8') as f:
+        for line in f:
+            split_line = line.split()
+            word = split_line[0]
+            vector = np.array([float(val) for val in split_line[1:]])
+            glove_model[word] = vector
+    return glove_model
+
+# 计算文本的词向量均值
+def get_vector_mean(text, model):
+    """
+    计算文本的词向量均值
+    :param text: 输入文本
+    :param model: 词向量模型
+    :return: 均值词向量
+    """
+    words = text.split()  # 将文本分词
+    word_vectors = []
+
+    for word in words:
+        if word in model:
+            word_vectors.append(model[word])
+
+    if not word_vectors:
+        return np.zeros(model.vector_size)  # 如果没有有效词向量，则返回零向量
+
+    return np.mean(word_vectors, axis=0)  # 计算均值
+
+# 计算余弦相似度
+def cosine_similarity(vec1, vec2):
+    """
+    计算两个向量的余弦相似度
+    :param vec1: 第一个向量
+    :param vec2: 第二个向量
+    :return: 余弦相似度
+    """
+    if np.linalg.norm(vec1) == 0 or np.linalg.norm(vec2) == 0:
+        return 0.0  # 避免除以零的情况
+    return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
+
+# 主函数示例
+def main():
+    # 加载模型
+    glove_model_path = '/content/glove.6B.100d.txt'
+
+    glove_model = load_glove_model(glove_model_path, encoding="utf-8")
+
+    # 导入文本
+    text1 = file_contents
+    text2 = text_content
+
+    # 计算均值词向量
+
+    mean_vector1_glove = get_vector_mean(text1, glove_model)
+    mean_vector2_glove = get_vector_mean(text2, glove_model)
+
+    # 计算相似度
+    similarity_glove = cosine_similarity(mean_vector1_glove, mean_vector2_glove)
+
+    # 输出结果
+    print(f"GloVe Similarity: {similarity_glove:.4f}")
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code>GloVe Similarity: 0.9933
+</code></pre>
+<h1 id="文本分类分类任务"><a class="header" href="#文本分类分类任务">文本分类（分类任务）</a></h1>
+<p>什么是文本分类？</p>
+<p>文本分类是指计算机将一篇载有信息的文本映射到预先给定的某一类别或某几类别主题的过程。</p>
+<p>主要应用：新闻主题分类、情感分析、舆情分析、邮件过滤等</p>
+<h2 id="基于朴素贝叶斯的文本分类"><a class="header" href="#基于朴素贝叶斯的文本分类">基于朴素贝叶斯的文本分类</a></h2>
+<p>基本思想：基于贝叶斯定理确定文本属于某一类别的概率，选择具有最高概率的类别作为文本分类结果</p>
+<p>特征独立性假设：认为文本中的特征（词语或单词）在给定类别下相互独立</p>
+<p>基本流程：</p>
+<ol>
+<li>将文本通过词袋模型或TF-IDF表示为特征向量</li>
+<li>通过文本的特征向量与标签，朴素贝叶斯分类器学习类别和单词之间的条件概率分布，即计算给定类别下，每个单词出现的条件概率</li>
+<li>给定一个新文本，分类器计算它属于每个类别的条件概率，选择具有最高条件概率的类别作为最终的分类结果</li>
+</ol>
+<h3 id="实战朴素贝叶斯新闻文本分类"><a class="header" href="#实战朴素贝叶斯新闻文本分类">实战：朴素贝叶斯新闻文本分类</a></h3>
+<h2 id="bert-文本分类"><a class="header" href="#bert-文本分类">BERT 文本分类</a></h2>
+<p>基本流程：</p>
+<ol>
+<li>将【CLS】位置对应的输出作为句子表示</li>
+<li>送入全连接层（Dense），将句子表示为hidden_dim维映射到label_dim维（类别总数）</li>
+<li>经过Softmax函数处理，获得该句子属于各类别的概率</li>
+<li>概率最大值对应的类别为句子的预测标签</li>
+</ol>
+<h3 id="实例bert新闻文本分类"><a class="header" href="#实例bert新闻文本分类">实例：BERT新闻文本分类</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="文本信息抽取"><a class="header" href="#文本信息抽取">文本信息抽取</a></h1>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96%E6%A6%82%E8%BF%B0">信息抽取概述</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E5%92%8C%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D">基于规则和模板匹配</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%BA%8F%E5%88%97%E6%A0%87%E6%B3%A8">序列标注</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B">基于统计模型</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">基于深度学习</a></li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB%E4%B8%93%E5%90%8D%E8%AF%86%E5%88%AB">命名实体识别（专名识别）</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E5%8F%8A%E5%88%86%E7%B1%BB">命名实体及分类</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB%E4%BB%BB%E5%8A%A1">命名实体识别任务</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%9F%BA%E4%BA%8Elstm%E7%9A%84ner">基于LSTM的NER</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%9F%BA%E4%BA%8E%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84ner">基于预训练语言模型的NER</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E4%B8%AD%E6%96%87%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB%E7%9A%84%E9%9A%BE%E7%82%B9">中文命名实体识别的难点</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E7%BB%86%E7%B2%92%E5%BA%A6%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB">细粒度命名实体识别</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96">实体关系抽取</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1">知识图谱</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E6%8A%BD%E5%8F%96%E5%BC%8F%E6%A8%A1%E5%9E%8B">抽取式模型</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96">基于深度学习的实体关系抽取</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%A8%A1%E5%9E%8B">流水线模型</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E8%81%94%E5%90%88re%E6%A8%A1%E5%9E%8B%E7%AB%AF%E5%88%B0%E7%AB%AF">联合RE模型（端到端）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96">事件抽取</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0">事件及其组成元素</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E4%BB%BB%E5%8A%A1">事件抽取任务</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#pipeline%E6%A8%A1%E5%9E%8B">Pipeline模型</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96.html#%E8%81%94%E5%90%88%E6%8A%BD%E5%8F%96%E6%A8%A1%E5%9E%8B">联合抽取模型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="信息抽取概述"><a class="header" href="#信息抽取概述">信息抽取概述</a></h1>
+<p>什么是信息抽取？</p>
+<p>将文本中的非结构化信息自动提取转换为结构化数据，并转化为可供计算机能够处理的知识。</p>
+<p>信息抽取常见任务：命名实体识别、关系抽取、事件抽取</p>
+<p>常用方法：基于规则和模板匹配、基于统计模型和基于深度学习</p>
+<h2 id="基于规则和模板匹配"><a class="header" href="#基于规则和模板匹配">基于规则和模板匹配</a></h2>
+<p>基本思想：匹配规则，将文本与规则进行匹配来识别命名实体，适用于抽取可控且表达规范的信息</p>
+<p>制定规则方式：人工编写、使用学习方法自动学习</p>
+<p>优势：准确，有些命名实体只能通过规则提取</p>
+<p>局限：</p>
+<ol>
+<li>需要专家制定大量的推理规则</li>
+<li>需要谨慎处理规则之间的冲突问题</li>
+<li>泛化性比较差，不便于优化</li>
+</ol>
+<p>示例：正则表达式提取电话号码</p>
+<h2 id="序列标注"><a class="header" href="#序列标注">序列标注</a></h2>
+<p>什么是序列标注？</p>
+<p>序列标注是对自然语言文本中的每个词或子词分配一个标签或类别</p>
+<p>常用标注模式：IO、BIO、BIOES</p>
+<h2 id="基于统计模型"><a class="header" href="#基于统计模型">基于统计模型</a></h2>
+<p>基本原理：标签序列之间是有强相互依赖关系，借助统计模型，将信息抽取任务形式化为从文本输入到特定目标结构的预测</p>
+<p>常见方法：最大熵分类模型（ME）、最大熵马尔可夫模型（MEMM）、支持向量机（SVM）、隐马尔可夫模型（HMM）、条件随机场（CRF）</p>
+<p>局限：依赖专家、泛化性差</p>
+<h2 id="基于深度学习"><a class="header" href="#基于深度学习">基于深度学习</a></h2>
+<p>基本思想：通过深度神经网络自动学习数据中的特征和模式</p>
+<p>优势：无需人工定义特征模板，能自动学习有效特征</p>
+<p>深度学习模型架构：</p>
+<ul>
+<li>输入层分布式表示：字符向量化，考虑单词和字符级别的嵌入，以及其他相关语义标签</li>
+<li>上下文编码器：获得文本的特征向量，使用RNN、LSTM、BERT等网络捕捉上下文相关性</li>
+<li>标签解码器：预测输入序列的标签，训练标签解码器以检测实体边界，预测相应的标签类型</li>
+</ul>
+<h1 id="命名实体识别专名识别"><a class="header" href="#命名实体识别专名识别">命名实体识别（专名识别）</a></h1>
+<h2 id="命名实体及分类"><a class="header" href="#命名实体及分类">命名实体及分类</a></h2>
+<p>命名实体一般指文本中具有特定意义或者指代性强的实体，通常包括人名、地名、组织机构名、日期时间、专有名词等。</p>
+<p>3大类（数字、实体、时间）</p>
+<p>7小类：人名、地名、组织机构名、时间、日期、货币、百分比</p>
+<p>作用：信息抽取基础任务</p>
+<h2 id="命名实体识别任务"><a class="header" href="#命名实体识别任务">命名实体识别任务</a></h2>
+<h3 id="基于lstm的ner"><a class="header" href="#基于lstm的ner">基于LSTM的NER</a></h3>
+<p>使用LSTM学习文本特征表示，利用CRF进行标签预测</p>
+<h3 id="基于预训练语言模型的ner"><a class="header" href="#基于预训练语言模型的ner">基于预训练语言模型的NER</a></h3>
+<p>优点：通过Self-attention机制，建立上下文联系，可以在特定任务上进行微调，泛化性能较好</p>
+<p>两种类型：Bert+MLP+Softmax、Bert+CRF</p>
+<p>Bert+MLP+Softmax：交叉熵损失函数</p>
+<p>优点：训练和推理相对简单，计算效率高；适用于简单的标注任务，不考虑标签之间的复杂关系</p>
+<p>缺点：没有明确序列依赖关系，易产生错误预测</p>
+<p>Bert+CRF：负对数似然损失函数</p>
+<p>优点：在序列标注中考虑了标签之间的依赖关系，更适用于需要考虑标签序列整体结构的复杂任务</p>
+<p>缺点：训练和推理相对复杂，计算代价高；在某些简单任务上可能会过于复杂，导致过拟合</p>
+<h3 id="中文命名实体识别的难点"><a class="header" href="#中文命名实体识别的难点">中文命名实体识别的难点</a></h3>
+<p>难点：</p>
+<ol>
+<li>词语切分</li>
+<li>多义词和歧义词</li>
+<li>命名实体的种类多样</li>
+<li>数据标注困难</li>
+<li>命名实体的上下文依赖性</li>
+</ol>
+<h3 id="细粒度命名实体识别"><a class="header" href="#细粒度命名实体识别">细粒度命名实体识别</a></h3>
+<p>更细致</p>
+<p>难点：</p>
+<ol>
+<li>数据标注困难</li>
+<li>类别不平衡问题</li>
+<li>上下文语境依赖性</li>
+<li>模型复杂度及训练困难</li>
+</ol>
+<h1 id="实体关系抽取"><a class="header" href="#实体关系抽取">实体关系抽取</a></h1>
+<p>什么是关系抽取？</p>
+<p>关系抽取也叫三元组抽取，从文本中同时抽取两个实体及其对应关系</p>
+<p>三元组可以表示为（Subject, Relation, Object）或（Subject, Prodicate, Object）</p>
+<p>关系抽取=实体识别+关系分类</p>
+<h2 id="知识图谱"><a class="header" href="#知识图谱">知识图谱</a></h2>
+<p>什么是知识图谱？</p>
+<p>知识图谱是一种语义网络，用以抽象现实世界的实体、概念及关系，并以三元组的形式来表示知识。</p>
+<p>知识图谱由三类元素构成：</p>
+<ul>
+<li>实体（entity）</li>
+<li>属性（literal）</li>
+<li>关系（relation）</li>
+</ul>
+<p>图谱数据的组织和存储：</p>
+<ul>
+<li>图数据由节点和边组成</li>
+<li>节点：表示现实世界中存在的实体或实体的属性</li>
+<li>边：实体与实体之间的关系</li>
+<li>关系不仅可以用于连接两个实体也可以连接实体和某属性</li>
+</ul>
+<p>知识图谱可以使用图数据库如Neo4j存储。</p>
+<h2 id="抽取式模型"><a class="header" href="#抽取式模型">抽取式模型</a></h2>
+<p>分类</p>
+<ol>
+<li>基于标注的模型</li>
+<li>基于片段的模型</li>
+<li>基于填表的模型</li>
+<li>基于阅读理解的模型</li>
+</ol>
+<h2 id="基于深度学习的实体关系抽取"><a class="header" href="#基于深度学习的实体关系抽取">基于深度学习的实体关系抽取</a></h2>
+<h3 id="流水线模型"><a class="header" href="#流水线模型">流水线模型</a></h3>
+<p>流程：</p>
+<ol>
+<li>建立实体识别模型：对句子进行实体识别</li>
+<li>建立关系分类模型：将识别出的实体两两组合，进行关系分类，预测判断提取的实体之间是否存在某种关系</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>误差传播</li>
+<li>子任务间缺乏交互</li>
+<li>产生冗余信息</li>
+</ol>
+<h3 id="联合re模型端到端"><a class="header" href="#联合re模型端到端">联合RE模型（端到端）</a></h3>
+<p>将实体抽取和关系分类两个子任务整合，联合学习，优化编码和解码</p>
+<p>两个子任务间的信息交互，提升了实体关系抽取的效果</p>
+<p>两大类型：基于参数共享（多任务学习）的实体关系抽取、基于关系重叠（联合解码、结构化预测）的实体关系抽取</p>
+<h1 id="事件抽取"><a class="header" href="#事件抽取">事件抽取</a></h1>
+<p>什么是事件抽取？</p>
+<p>事件抽取：自动从非结构化文本中获取事件并进行结构化展示</p>
+<p>事件抽取=事件识别+角色分类</p>
+<h2 id="事件及其组成元素"><a class="header" href="#事件及其组成元素">事件及其组成元素</a></h2>
+<p>事件：指在特定时间、地点，并涉及一个或多个参与者的某件事的特定发生，通常可以描述为状态的变化</p>
+<p>事件组成元素：</p>
+<ol>
+<li>触发词</li>
+<li>事件类型</li>
+<li>论元：事件的参与者</li>
+<li>论元角色：论元在事件中充当的角色</li>
+</ol>
+<h2 id="事件抽取任务"><a class="header" href="#事件抽取任务">事件抽取任务</a></h2>
+<p>包括事件识别、角色分类两个子任务</p>
+<h3 id="pipeline模型"><a class="header" href="#pipeline模型">Pipeline模型</a></h3>
+<p>对句子进行编码，然后把事件抽取转换为多阶段的分类问题，将第一个子任务的输出作为第二个子任务的输入，任务之间存在依赖关系</p>
+<p>缺点：</p>
+<ol>
+<li>误差传递</li>
+<li>缺乏交互</li>
+</ol>
+<h3 id="联合抽取模型"><a class="header" href="#联合抽取模型">联合抽取模型</a></h3>
+<p>对句子进行编码，将事件类型检测和论元识别两个子任务整合，在一个模型中联合学习，优化编码和解码</p>
+<p>优点：</p>
+<ul>
+<li>避免了触发词识别错误影响论元提取</li>
+<li>减少了子任务模型的数量，增强了不同子任务模块之间的关联和交互，缓解了误差累积问题</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>本质上还是多任务模型，没有解决误差传递的问题</li>
+<li>预测时触发词和论元的识别连续进行，难以避免事件类型预测错误对论元抽取的影响</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="文本生成"><a class="header" href="#文本生成">文本生成</a></h1>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90%E6%A6%82%E8%BF%B0">文本生成概述</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95">文本生成方法</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90">基于规则的文本生成</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90">基于统计机器学习的文本生成</a></li>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90">基于深度学习的文本生成</a></li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E6%96%87%E6%9C%AC%E5%BA%8F%E5%88%97%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8Bbart">文本序列生成模型BART</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E9%87%87%E6%A0%B7%E7%AD%96%E7%95%A5">采样策略</a></li>
+</ul>
+</li>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E5%8F%AF%E6%8E%A7%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90ctg">可控文本生成CTG</a>
+<ul>
+<li><a href="%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90.html#%E5%8F%AF%E6%8E%A7%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95">可控文本生成方法</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="文本生成概述"><a class="header" href="#文本生成概述">文本生成概述</a></h2>
+<p>什么是自然语言生成？</p>
+<p>自然语言生成是为了达到特定交流目标而生成自然语言文本的过程</p>
+<p>根据给定的需求和规则组织组织信息、生成语法正确且通顺的文本</p>
+<p>文本生成任务是自然语言生成的应用</p>
+<p>常见任务：文本摘要、机器翻译、文本描述、对话生成</p>
+<h2 id="文本生成方法"><a class="header" href="#文本生成方法">文本生成方法</a></h2>
+<h3 id="基于规则的文本生成"><a class="header" href="#基于规则的文本生成">基于规则的文本生成</a></h3>
+<p>代码模板，if-else字符串填充</p>
+<p>优点：速度快，无需复杂的计算；输出结果高度可确定</p>
+<p>缺点：泛化性差，输出缺乏多样性</p>
+<h3 id="基于统计机器学习的文本生成"><a class="header" href="#基于统计机器学习的文本生成">基于统计机器学习的文本生成</a></h3>
+<p>常见的有朴素贝叶斯算法、N-gram</p>
+<p>通过统计语料库总督词语和短语的频率，预测下一个词或短语出现的概率</p>
+<p>用于语音识别、搜索引擎、输入法等实时性要求比较高的场景</p>
+<p>缺点：处理长文本时具有较大的局限性</p>
+<h3 id="基于深度学习的文本生成"><a class="header" href="#基于深度学习的文本生成">基于深度学习的文本生成</a></h3>
+<p>常见工具：</p>
+<ul>
+<li>RNN、LSTM</li>
+<li>BART、GPT、T5</li>
+</ul>
+<p>基于语言模型生成文本</p>
+<p>训练一个语言模型表示语言的潜在空间即统计结构</p>
+<ul>
+<li>输入前面的标记，语言模型能够预测序列中后续的一个或多个标记</li>
+<li>标记通常是单词或字符</li>
+</ul>
+<p>使用训练好的语言模型生成新序列</p>
+<h2 id="文本序列生成模型bart"><a class="header" href="#文本序列生成模型bart">文本序列生成模型BART</a></h2>
+<p>BART：Bidirectional and Auto-Regressive Transformers</p>
+<p>BART通过Transformers中的Encoder-Decoder架构生成文本</p>
+<h3 id="采样策略"><a class="header" href="#采样策略">采样策略</a></h3>
+<p>生成文本时如何选取下一个token</p>
+<p>常用策略：</p>
+<ul>
+<li>贪婪采样：每次选择最优，复杂度低，无法保证全局最优</li>
+<li>随机采样：获得下一个Token的概率分布后，利用温度、top-k（取词表打分最高的前K个词）、top-p（概率之和不超过p）等算法对概率进行修改，再进行随机采样，常用于开放式对话领域提高生成文本的多样性，适合较短的文本。缺点：随机采样容易产生文本语义、逻辑等前后不一致的问题</li>
+<li>束搜索Beam Search：同时生成多句话，取整体概率最优解。能够生成高质量、连贯性强的文本，常用于机器翻译、文本摘要和对话系统</li>
+</ul>
+<h2 id="可控文本生成ctg"><a class="header" href="#可控文本生成ctg">可控文本生成CTG</a></h2>
+<p>可控文本生成和传统自然语言生成的区别：在输入时加入某些控制元素，从而让最终的输出满足满足某种条件</p>
+<p>例如：安装故事线给定关键字生成文章</p>
+<p>要求：生成文章涵盖关键字，关键字按照顺序出现且逻辑通顺</p>
+<h3 id="可控文本生成方法"><a class="header" href="#可控文本生成方法">可控文本生成方法</a></h3>
+<ul>
+<li>微调</li>
+<li>重构</li>
+<li>后处理</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="智能问答和对话系统"><a class="header" href="#智能问答和对话系统">智能问答和对话系统</a></h1>
+<ul>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F">智能问答系统</a>
+<ul>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F%E5%88%86%E7%B1%BB">问答系统分类</a>
+<ul>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%9F%BA%E4%BA%8E%E9%97%AE%E7%AD%94%E5%AF%B9">基于问答对</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC">基于文本</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1kbaq">基于知识图谱KBAQ</a></li>
+</ul>
+</li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%AE%9E%E4%BE%8Brocketqa%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F">实例：RocketQA问答系统</a></li>
+</ul>
+</li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F">对话系统</a>
+<ul>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E4%BB%BB%E5%8A%A1%E5%9E%8B%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F">任务型对话系统</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3nlu">自然语言理解NLU</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%AF%B9%E8%AF%9D%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86">对话状态管理</a>
+<ul>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%AF%B9%E8%AF%9D%E7%8A%B6%E6%80%81%E8%B7%9F%E8%B8%AAdialogue-state-track">对话状态跟踪（Dialogue State Track）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%9F%BA%E4%BA%8E%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%97%AE%E7%AD%94">基于大语言模型的问答</a>
+<ul>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%B9%BB%E8%A7%89%E9%97%AE%E9%A2%98">幻觉问题</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%80%9F%E7%94%A8%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AF%86%E6%94%B9%E5%96%84%E5%B9%BB%E8%A7%89">借用外部知识改善幻觉</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AF%86%E9%97%AE%E7%AD%94langchain">外部知识问答LangChain</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#prompt%E5%B7%A5%E7%A8%8B">Prompt工程</a></li>
+<li><a href="%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E5%92%8C%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F.html#%E9%9D%A2%E5%90%91%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%96%B9%E6%B3%95">面向领域问题的大模型训练方法</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="智能问答系统"><a class="header" href="#智能问答系统">智能问答系统</a></h1>
+<p>问答系统是信息检索系统的一种高级形式，使用自然语言回答用户的问题。</p>
+<p>什么是智能问答系统？智能问答系统有哪些常见应用？</p>
+<p>智能问答系统是一种基于人工智能技术的系统，可以根据用户提出的问题自动给出答案。这种系统通过自然语言处理、知识图谱和机器学习等技术，能够理解用户的问题并从大量的数据中找到最合适的答案。</p>
+<p>智能问答系统在各个领域都有应用，其中一些常见的应用包括：</p>
+<ol>
+<li>
+<p>搜索引擎中的智能问答功能，比如谷歌的“智能回答”功能，可以直接显示问题的答案而不需要用户点击链接。</p>
+</li>
+<li>
+<p>个人助理软件，比如苹果的Siri、亚马逊的Alexa和微软的Cortana，可以回答用户提出的问题，执行任务或者提供相关的信息。</p>
+</li>
+<li>
+<p>在线客服系统，企业可以通过智能问答系统提供自动化的客户服务，快速解答用户的问题。</p>
+</li>
+<li>
+<p>医疗健康领域，智能问答系统可以提供医疗咨询、疾病诊断等服务，帮助用户更好地了解自己的健康状况。</p>
+</li>
+<li>
+<p>教育领域，智能问答系统可以为学生提供在线学习的辅助，回答他们的问题并提供相关的学习资源。</p>
+</li>
+</ol>
+<p>总的来说，智能问答系统可以提高工作效率，节省时间，帮助用户更快地获取所需的信息。</p>
+<h2 id="问答系统分类"><a class="header" href="#问答系统分类">问答系统分类</a></h2>
+<p>问答系统类型：基于问答对、基于知识图谱KBAQ、基于文本、基于表格、基于视觉等</p>
+<h3 id="基于问答对"><a class="header" href="#基于问答对">基于问答对</a></h3>
+<p>什么是问答对？</p>
+<p>问答对是指问答系统中存储的每一组问题和对应的答案，也可以称为问答组。问答对是智能问答系统的核心，通过构建大量的问答对，系统可以学习如何根据用户的问题提供合适的回答。</p>
+<p>FAQ是“Frequently Asked Questions”的缩写，即“常见问题解答”。FAQ是一个用于提供常见问题和相应答案的文件或页面，通常用于帮助用户自行查找解决办法，而不需要联系客服或提交工单。</p>
+<p>特点：知识通常是封闭的，变化较为缓慢</p>
+<p>CQA (Community Question Answer) 是指社区问答系统，是一种让用户在平台上提出问题并获得其他用户回答的系统。在CQA系统中，用户可以提出问题并回答其他用户的问题，从而形成一个社区化的知识分享平台。</p>
+<p>CQA系统通常包含以下特点：</p>
+<ol>
+<li>用户生成内容：用户通过提问和回答的方式产生丰富的内容，共同构建起知识库。</li>
+<li>社区互动：用户可以对问题和答案进行投票、评论和讨论，推动优质内容的展现。</li>
+<li>专家认证：有些CQA系统会通过用户的积分、排名等方式评选出专家用户，提高专业知识的准确性。</li>
+<li>搜索和推荐功能：通过智能算法，CQA系统能够提供相关问题的搜索结果和推荐，方便用户查找所需信息。</li>
+</ol>
+<p>知名的CQA系统包括Quora、Stack Overflow、知乎等，这些平台通过用户共享知识、讨论问题等方式，形成了庞大的社区用户群体，为用户提供了便捷的获取知识、解决问题的途径。</p>
+<p>特点：问答对来自社区论坛中用户的提问和回答，较为容易获取，但是相对质量较低。问答对通常是面向开放域的，知识变化和更新速度较快。</p>
+<p>问答流程：</p>
+<ol>
+<li>问题解析：对用户输入的问题进行分词、纠错等预处理步骤，主要是问题分类、关键词提取、关键词扩展</li>
+<li>召回：利用信息检索引擎根据处理后的问题提取可能的候选问题</li>
+<li>排序：利用信息检索模型对召回的候选问题进行相似度排序，寻找到最相似的问题答案并返回给用户</li>
+</ol>
+<h3 id="基于文本"><a class="header" href="#基于文本">基于文本</a></h3>
+<p>问答流程：</p>
+<ol>
+<li>关键词提取、扩展</li>
+<li>信息检索：根据问题分析得到的关键词及其扩展形式从在线或者离线的文档库中检索到相关文档</li>
+<li>答案抽取：从检索得到的相关文档中抽取答案</li>
+</ol>
+<h3 id="基于知识图谱kbaq"><a class="header" href="#基于知识图谱kbaq">基于知识图谱KBAQ</a></h3>
+<p>什么是知识图谱？</p>
+<p>知识图谱是一种语义网络，用以抽象现实世界的实体、概念及关系，并以三元组的形式来表示知识。</p>
+<p>知识图谱由三类元素构成：</p>
+<ul>
+<li>实体（entity）</li>
+<li>属性（literal）</li>
+<li>关系（relation）</li>
+</ul>
+<p>图谱数据的组织和存储：</p>
+<ul>
+<li>图数据由节点和边组成</li>
+<li>节点：表示现实世界中存在的实体或实体的属性</li>
+<li>边：实体与实体之间的关系</li>
+<li>关系不仅可以用于连接两个实体也可以连接实体和某属性</li>
+</ul>
+<p>知识图谱可以使用图数据库如Neo4j存储。</p>
+<p>基于知识图谱KBAQ问答流程：</p>
+<ul>
+<li>问答系统解析输入的自然语言问句，抽取问句中的实体、关系和属性等信息</li>
+<li>利用SPARQL生成查询语句，在知识图谱数据库中检索获得结果</li>
+<li>基于检索结果生成回答</li>
+</ul>
+<h2 id="实例rocketqa问答系统"><a class="header" href="#实例rocketqa问答系统">实例：RocketQA问答系统</a></h2>
+<h1 id="对话系统"><a class="header" href="#对话系统">对话系统</a></h1>
+<p>什么是对话系统？</p>
+<p>对话系统通常指以自然语言为载体，用户和系统通过多轮交互实现特定交互目标的智能系统</p>
+<p>对话系统的交互目标包括完成特定任务、获取信息、建议或推荐、获得情感抚慰和社交陪伴。</p>
+<h2 id="任务型对话系统"><a class="header" href="#任务型对话系统">任务型对话系统</a></h2>
+<p>什么是任务型对话系统？</p>
+<p>任务型对话系统是一种人工智能系统，旨在帮助用户完成特定任务或解决特定问题。与普通的对话系统不同，任务型对话系统更强调在对话中实现任务的目标。这种系统通常受到自然语言处理、机器学习和对话系统等领域的技术支持。</p>
+<p>任务型对话系统的特点包括：</p>
+<ol>
+<li>
+<p>目标导向：系统能够理解用户的任务目标，并与用户进行交互以实现这一目标，而不仅仅是进行闲聊或提供信息。</p>
+</li>
+<li>
+<p>自动化执行：系统能够执行用户请求的操作或查询，并返回对应的结果，如订票、查询天气、制定行程等。</p>
+</li>
+<li>
+<p>多轮对话：系统能够进行多轮对话，解决复杂的任务，需要持续交互确定用户需求。</p>
+</li>
+<li>
+<p>个性化服务：系统可以根据用户的偏好和历史信息提供个性化的服务和建议。</p>
+</li>
+</ol>
+<p>任务型对话系统在各个领域都有广泛的应用，例如在线客服、智能助手、智能家居控制系统等。这种系统能够提高工作效率，增强用户体验，帮助用户更快地完成任务。</p>
+<p>任务型对话系统目的是使用尽可能少的对话轮数帮助用户完成预定任务或动作</p>
+<p>大多数任务型对话系统对话数据规模较小，难以通过大量数据进行模型训练，前期需要手动制定的规则解决冷启动问题，这使得对话系统的构建变得昂贵和耗时，限制了对话系统在其他领域的使用。</p>
+<h2 id="自然语言理解nlu"><a class="header" href="#自然语言理解nlu">自然语言理解NLU</a></h2>
+<p>自然语言理解任务：将自然语言文本或语音映射成可以执行用户期待动作的数据结构，以便计算机能够理解和处理</p>
+<p>Schema：通常使用领域、意图、槽位等描述用户期待动作的数据结构</p>
+<ul>
+<li>领域domain：领域范围，如天气、闹钟、音乐、火车票等；</li>
+<li>意图intent：用户意图，如查天气、订火车票、退火车票等；</li>
+<li>槽位slot：用户意图的相关属性信息，如火车票时间、出发地、目的地等</li>
+</ul>
+<p>实现方法：</p>
+<ul>
+<li>领域识别、意图识别：分类任务</li>
+<li>槽值抽取：序列标注任务</li>
+</ul>
+<p>端到端的NLU模型：集成三大任务</p>
+<ol>
+<li>输入用户问题，3个子任务共享编码</li>
+<li>基于【CLS】Token编码，判别领域、意图分类</li>
+<li>槽值抽取采用BIO标签识别</li>
+<li>梯度下降的loss采用3个子任务的loss和</li>
+</ol>
+<p>性能评价</p>
+<ul>
+<li>评估指标：准确率、精确率、召回率和F1 Score</li>
+<li>SA(Semantic Accuracy)：正确分析的句子数量所占比例，正确分析指正确预测了领域与意图，且正确预测了所有槽值（包括O标签）</li>
+</ul>
+<p>常用数据集：ATIS</p>
+<h2 id="对话状态管理"><a class="header" href="#对话状态管理">对话状态管理</a></h2>
+<h3 id="对话状态跟踪dialogue-state-track"><a class="header" href="#对话状态跟踪dialogue-state-track">对话状态跟踪（Dialogue State Track）</a></h3>
+<p>任务定义：</p>
+<ul>
+<li>在对话过程中提取用户目标，并用一系列的槽值对来表示当前的对话状态</li>
+<li>对话系统根据对话状态生成下一步系统动作，进而生成系统回复</li>
+</ul>
+<p>评估指标：Joint Goal Accuracy（JGA）：对话状态预测正确的训练数据量占总训练数据量的比例</p>
+<p>只有当一条训练数据中的所有槽值都预测正确，才认为该条数据的对话状态预测正确。</p>
+<p>DST模型：Trade</p>
+<ul>
+<li>编码：获得对话的文本表示</li>
+<li>分类：判断某个槽是否取值</li>
+<li>生成槽值：根据生成器生成槽值</li>
+</ul>
+<h1 id="基于大语言模型的问答"><a class="header" href="#基于大语言模型的问答">基于大语言模型的问答</a></h1>
+<h2 id="幻觉问题"><a class="header" href="#幻觉问题">幻觉问题</a></h2>
+<p>常见幻觉：</p>
+<ul>
+<li>与用户输入冲突的幻觉：大模型生成的回复违背了用户输入中的任务指示或任务输入</li>
+<li>与已生成的上下文冲突的幻觉：大模型生成的回复中出现了自我矛盾</li>
+<li>与事实知识冲突的幻觉：大模型生成的回复与公认的事实知识冲突</li>
+</ul>
+<h2 id="借用外部知识改善幻觉"><a class="header" href="#借用外部知识改善幻觉">借用外部知识改善幻觉</a></h2>
+<p>外部知识：</p>
+<ul>
+<li>无结构文本</li>
+<li>结构化数据（网页或数据库）</li>
+<li>各类工具</li>
+</ul>
+<p>将检索到的相关知识提供给模型生成回复。在模型生成回复后，引入外部知识，让模型纠正先前回复中存在的幻觉。</p>
+<h2 id="外部知识问答langchain"><a class="header" href="#外部知识问答langchain">外部知识问答LangChain</a></h2>
+<p>流程：</p>
+<ol>
+<li>将外部知识向量化，建立索引，保存到向量数据库中</li>
+<li>用户问题向量化，相似度检索</li>
+<li>基于检索结果内容与用户问题，生成提示，送入大模型，生成回答</li>
+</ol>
+<h2 id="prompt工程"><a class="header" href="#prompt工程">Prompt工程</a></h2>
+<p>提示工程：设计、改进、完善提示的学问或技术，使模型能够更准确、可靠地回答问题</p>
+<p>提示语要素：</p>
+<ul>
+<li>指令</li>
+<li>上下文</li>
+<li>输入数据</li>
+<li>输出指示</li>
+</ul>
+<h2 id="面向领域问题的大模型训练方法"><a class="header" href="#面向领域问题的大模型训练方法">面向领域问题的大模型训练方法</a></h2>
+<p>采用有监督的精调（Supervised Fine-tune， SFT）技术实现</p>
+<p>预训练：采用领域文档训练行业文本的语言理解能力</p>
+<p>指令精调：面向应用需求，训练任务处理能力</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="大语言模型-1"><a class="header" href="#大语言模型-1">大语言模型</a></h1>
 
                     </main>
 

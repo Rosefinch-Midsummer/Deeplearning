@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>智能问答和对话系统 - Deep Learning</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded affix "><li class="part-title">NN</li><li class="chapter-item expanded affix "><li class="part-title">NLP</li><li class="chapter-item expanded "><a href="NLP.html"><strong aria-hidden="true">2.</strong> NLP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="全文检索与关键词提取.html"><strong aria-hidden="true">2.1.</strong> 全文检索与关键词提取</a></li><li class="chapter-item expanded "><a href="文本表示和语言模型.html"><strong aria-hidden="true">2.2.</strong> 文本表示和语言模型</a></li><li class="chapter-item expanded "><a href="文本分类和相似度计算.html"><strong aria-hidden="true">2.3.</strong> 文本分类和相似度计算</a></li><li class="chapter-item expanded "><a href="文本信息抽取.html"><strong aria-hidden="true">2.4.</strong> 文本信息抽取</a></li><li class="chapter-item expanded "><a href="文本生成.html"><strong aria-hidden="true">2.5.</strong> 文本生成</a></li><li class="chapter-item expanded "><a href="智能问答和对话系统.html" class="active"><strong aria-hidden="true">2.6.</strong> 智能问答和对话系统</a></li><li class="chapter-item expanded "><a href="大语言模型.html"><strong aria-hidden="true">2.7.</strong> 大语言模型</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">CV</li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Deep Learning</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="智能问答和对话系统"><a class="header" href="#智能问答和对话系统">智能问答和对话系统</a></h1>
+<ul>
+<li><a href="#%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F">智能问答系统</a>
+<ul>
+<li><a href="#%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F%E5%88%86%E7%B1%BB">问答系统分类</a>
+<ul>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E9%97%AE%E7%AD%94%E5%AF%B9">基于问答对</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC">基于文本</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1kbaq">基于知识图谱KBAQ</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9E%E4%BE%8Brocketqa%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F">实例：RocketQA问答系统</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F">对话系统</a>
+<ul>
+<li><a href="#%E4%BB%BB%E5%8A%A1%E5%9E%8B%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F">任务型对话系统</a></li>
+<li><a href="#%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3nlu">自然语言理解NLU</a></li>
+<li><a href="#%E5%AF%B9%E8%AF%9D%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86">对话状态管理</a>
+<ul>
+<li><a href="#%E5%AF%B9%E8%AF%9D%E7%8A%B6%E6%80%81%E8%B7%9F%E8%B8%AAdialogue-state-track">对话状态跟踪（Dialogue State Track）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%97%AE%E7%AD%94">基于大语言模型的问答</a>
+<ul>
+<li><a href="#%E5%B9%BB%E8%A7%89%E9%97%AE%E9%A2%98">幻觉问题</a></li>
+<li><a href="#%E5%80%9F%E7%94%A8%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AF%86%E6%94%B9%E5%96%84%E5%B9%BB%E8%A7%89">借用外部知识改善幻觉</a></li>
+<li><a href="#%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AF%86%E9%97%AE%E7%AD%94langchain">外部知识问答LangChain</a></li>
+<li><a href="#prompt%E5%B7%A5%E7%A8%8B">Prompt工程</a></li>
+<li><a href="#%E9%9D%A2%E5%90%91%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%96%B9%E6%B3%95">面向领域问题的大模型训练方法</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="智能问答系统"><a class="header" href="#智能问答系统">智能问答系统</a></h1>
+<p>问答系统是信息检索系统的一种高级形式，使用自然语言回答用户的问题。</p>
+<p>什么是智能问答系统？智能问答系统有哪些常见应用？</p>
+<p>智能问答系统是一种基于人工智能技术的系统，可以根据用户提出的问题自动给出答案。这种系统通过自然语言处理、知识图谱和机器学习等技术，能够理解用户的问题并从大量的数据中找到最合适的答案。</p>
+<p>智能问答系统在各个领域都有应用，其中一些常见的应用包括：</p>
+<ol>
+<li>
+<p>搜索引擎中的智能问答功能，比如谷歌的“智能回答”功能，可以直接显示问题的答案而不需要用户点击链接。</p>
+</li>
+<li>
+<p>个人助理软件，比如苹果的Siri、亚马逊的Alexa和微软的Cortana，可以回答用户提出的问题，执行任务或者提供相关的信息。</p>
+</li>
+<li>
+<p>在线客服系统，企业可以通过智能问答系统提供自动化的客户服务，快速解答用户的问题。</p>
+</li>
+<li>
+<p>医疗健康领域，智能问答系统可以提供医疗咨询、疾病诊断等服务，帮助用户更好地了解自己的健康状况。</p>
+</li>
+<li>
+<p>教育领域，智能问答系统可以为学生提供在线学习的辅助，回答他们的问题并提供相关的学习资源。</p>
+</li>
+</ol>
+<p>总的来说，智能问答系统可以提高工作效率，节省时间，帮助用户更快地获取所需的信息。</p>
+<h2 id="问答系统分类"><a class="header" href="#问答系统分类">问答系统分类</a></h2>
+<p>问答系统类型：基于问答对、基于知识图谱KBAQ、基于文本、基于表格、基于视觉等</p>
+<h3 id="基于问答对"><a class="header" href="#基于问答对">基于问答对</a></h3>
+<p>什么是问答对？</p>
+<p>问答对是指问答系统中存储的每一组问题和对应的答案，也可以称为问答组。问答对是智能问答系统的核心，通过构建大量的问答对，系统可以学习如何根据用户的问题提供合适的回答。</p>
+<p>FAQ是“Frequently Asked Questions”的缩写，即“常见问题解答”。FAQ是一个用于提供常见问题和相应答案的文件或页面，通常用于帮助用户自行查找解决办法，而不需要联系客服或提交工单。</p>
+<p>特点：知识通常是封闭的，变化较为缓慢</p>
+<p>CQA (Community Question Answer) 是指社区问答系统，是一种让用户在平台上提出问题并获得其他用户回答的系统。在CQA系统中，用户可以提出问题并回答其他用户的问题，从而形成一个社区化的知识分享平台。</p>
+<p>CQA系统通常包含以下特点：</p>
+<ol>
+<li>用户生成内容：用户通过提问和回答的方式产生丰富的内容，共同构建起知识库。</li>
+<li>社区互动：用户可以对问题和答案进行投票、评论和讨论，推动优质内容的展现。</li>
+<li>专家认证：有些CQA系统会通过用户的积分、排名等方式评选出专家用户，提高专业知识的准确性。</li>
+<li>搜索和推荐功能：通过智能算法，CQA系统能够提供相关问题的搜索结果和推荐，方便用户查找所需信息。</li>
+</ol>
+<p>知名的CQA系统包括Quora、Stack Overflow、知乎等，这些平台通过用户共享知识、讨论问题等方式，形成了庞大的社区用户群体，为用户提供了便捷的获取知识、解决问题的途径。</p>
+<p>特点：问答对来自社区论坛中用户的提问和回答，较为容易获取，但是相对质量较低。问答对通常是面向开放域的，知识变化和更新速度较快。</p>
+<p>问答流程：</p>
+<ol>
+<li>问题解析：对用户输入的问题进行分词、纠错等预处理步骤，主要是问题分类、关键词提取、关键词扩展</li>
+<li>召回：利用信息检索引擎根据处理后的问题提取可能的候选问题</li>
+<li>排序：利用信息检索模型对召回的候选问题进行相似度排序，寻找到最相似的问题答案并返回给用户</li>
+</ol>
+<h3 id="基于文本"><a class="header" href="#基于文本">基于文本</a></h3>
+<p>问答流程：</p>
+<ol>
+<li>关键词提取、扩展</li>
+<li>信息检索：根据问题分析得到的关键词及其扩展形式从在线或者离线的文档库中检索到相关文档</li>
+<li>答案抽取：从检索得到的相关文档中抽取答案</li>
+</ol>
+<h3 id="基于知识图谱kbaq"><a class="header" href="#基于知识图谱kbaq">基于知识图谱KBAQ</a></h3>
+<p>什么是知识图谱？</p>
+<p>知识图谱是一种语义网络，用以抽象现实世界的实体、概念及关系，并以三元组的形式来表示知识。</p>
+<p>知识图谱由三类元素构成：</p>
+<ul>
+<li>实体（entity）</li>
+<li>属性（literal）</li>
+<li>关系（relation）</li>
+</ul>
+<p>图谱数据的组织和存储：</p>
+<ul>
+<li>图数据由节点和边组成</li>
+<li>节点：表示现实世界中存在的实体或实体的属性</li>
+<li>边：实体与实体之间的关系</li>
+<li>关系不仅可以用于连接两个实体也可以连接实体和某属性</li>
+</ul>
+<p>知识图谱可以使用图数据库如Neo4j存储。</p>
+<p>基于知识图谱KBAQ问答流程：</p>
+<ul>
+<li>问答系统解析输入的自然语言问句，抽取问句中的实体、关系和属性等信息</li>
+<li>利用SPARQL生成查询语句，在知识图谱数据库中检索获得结果</li>
+<li>基于检索结果生成回答</li>
+</ul>
+<h2 id="实例rocketqa问答系统"><a class="header" href="#实例rocketqa问答系统">实例：RocketQA问答系统</a></h2>
+<h1 id="对话系统"><a class="header" href="#对话系统">对话系统</a></h1>
+<p>什么是对话系统？</p>
+<p>对话系统通常指以自然语言为载体，用户和系统通过多轮交互实现特定交互目标的智能系统</p>
+<p>对话系统的交互目标包括完成特定任务、获取信息、建议或推荐、获得情感抚慰和社交陪伴。</p>
+<h2 id="任务型对话系统"><a class="header" href="#任务型对话系统">任务型对话系统</a></h2>
+<p>什么是任务型对话系统？</p>
+<p>任务型对话系统是一种人工智能系统，旨在帮助用户完成特定任务或解决特定问题。与普通的对话系统不同，任务型对话系统更强调在对话中实现任务的目标。这种系统通常受到自然语言处理、机器学习和对话系统等领域的技术支持。</p>
+<p>任务型对话系统的特点包括：</p>
+<ol>
+<li>
+<p>目标导向：系统能够理解用户的任务目标，并与用户进行交互以实现这一目标，而不仅仅是进行闲聊或提供信息。</p>
+</li>
+<li>
+<p>自动化执行：系统能够执行用户请求的操作或查询，并返回对应的结果，如订票、查询天气、制定行程等。</p>
+</li>
+<li>
+<p>多轮对话：系统能够进行多轮对话，解决复杂的任务，需要持续交互确定用户需求。</p>
+</li>
+<li>
+<p>个性化服务：系统可以根据用户的偏好和历史信息提供个性化的服务和建议。</p>
+</li>
+</ol>
+<p>任务型对话系统在各个领域都有广泛的应用，例如在线客服、智能助手、智能家居控制系统等。这种系统能够提高工作效率，增强用户体验，帮助用户更快地完成任务。</p>
+<p>任务型对话系统目的是使用尽可能少的对话轮数帮助用户完成预定任务或动作</p>
+<p>大多数任务型对话系统对话数据规模较小，难以通过大量数据进行模型训练，前期需要手动制定的规则解决冷启动问题，这使得对话系统的构建变得昂贵和耗时，限制了对话系统在其他领域的使用。</p>
+<h2 id="自然语言理解nlu"><a class="header" href="#自然语言理解nlu">自然语言理解NLU</a></h2>
+<p>自然语言理解任务：将自然语言文本或语音映射成可以执行用户期待动作的数据结构，以便计算机能够理解和处理</p>
+<p>Schema：通常使用领域、意图、槽位等描述用户期待动作的数据结构</p>
+<ul>
+<li>领域domain：领域范围，如天气、闹钟、音乐、火车票等；</li>
+<li>意图intent：用户意图，如查天气、订火车票、退火车票等；</li>
+<li>槽位slot：用户意图的相关属性信息，如火车票时间、出发地、目的地等</li>
+</ul>
+<p>实现方法：</p>
+<ul>
+<li>领域识别、意图识别：分类任务</li>
+<li>槽值抽取：序列标注任务</li>
+</ul>
+<p>端到端的NLU模型：集成三大任务</p>
+<ol>
+<li>输入用户问题，3个子任务共享编码</li>
+<li>基于【CLS】Token编码，判别领域、意图分类</li>
+<li>槽值抽取采用BIO标签识别</li>
+<li>梯度下降的loss采用3个子任务的loss和</li>
+</ol>
+<p>性能评价</p>
+<ul>
+<li>评估指标：准确率、精确率、召回率和F1 Score</li>
+<li>SA(Semantic Accuracy)：正确分析的句子数量所占比例，正确分析指正确预测了领域与意图，且正确预测了所有槽值（包括O标签）</li>
+</ul>
+<p>常用数据集：ATIS</p>
+<h2 id="对话状态管理"><a class="header" href="#对话状态管理">对话状态管理</a></h2>
+<h3 id="对话状态跟踪dialogue-state-track"><a class="header" href="#对话状态跟踪dialogue-state-track">对话状态跟踪（Dialogue State Track）</a></h3>
+<p>任务定义：</p>
+<ul>
+<li>在对话过程中提取用户目标，并用一系列的槽值对来表示当前的对话状态</li>
+<li>对话系统根据对话状态生成下一步系统动作，进而生成系统回复</li>
+</ul>
+<p>评估指标：Joint Goal Accuracy（JGA）：对话状态预测正确的训练数据量占总训练数据量的比例</p>
+<p>只有当一条训练数据中的所有槽值都预测正确，才认为该条数据的对话状态预测正确。</p>
+<p>DST模型：Trade</p>
+<ul>
+<li>编码：获得对话的文本表示</li>
+<li>分类：判断某个槽是否取值</li>
+<li>生成槽值：根据生成器生成槽值</li>
+</ul>
+<h1 id="基于大语言模型的问答"><a class="header" href="#基于大语言模型的问答">基于大语言模型的问答</a></h1>
+<h2 id="幻觉问题"><a class="header" href="#幻觉问题">幻觉问题</a></h2>
+<p>常见幻觉：</p>
+<ul>
+<li>与用户输入冲突的幻觉：大模型生成的回复违背了用户输入中的任务指示或任务输入</li>
+<li>与已生成的上下文冲突的幻觉：大模型生成的回复中出现了自我矛盾</li>
+<li>与事实知识冲突的幻觉：大模型生成的回复与公认的事实知识冲突</li>
+</ul>
+<h2 id="借用外部知识改善幻觉"><a class="header" href="#借用外部知识改善幻觉">借用外部知识改善幻觉</a></h2>
+<p>外部知识：</p>
+<ul>
+<li>无结构文本</li>
+<li>结构化数据（网页或数据库）</li>
+<li>各类工具</li>
+</ul>
+<p>将检索到的相关知识提供给模型生成回复。在模型生成回复后，引入外部知识，让模型纠正先前回复中存在的幻觉。</p>
+<h2 id="外部知识问答langchain"><a class="header" href="#外部知识问答langchain">外部知识问答LangChain</a></h2>
+<p>流程：</p>
+<ol>
+<li>将外部知识向量化，建立索引，保存到向量数据库中</li>
+<li>用户问题向量化，相似度检索</li>
+<li>基于检索结果内容与用户问题，生成提示，送入大模型，生成回答</li>
+</ol>
+<h2 id="prompt工程"><a class="header" href="#prompt工程">Prompt工程</a></h2>
+<p>提示工程：设计、改进、完善提示的学问或技术，使模型能够更准确、可靠地回答问题</p>
+<p>提示语要素：</p>
+<ul>
+<li>指令</li>
+<li>上下文</li>
+<li>输入数据</li>
+<li>输出指示</li>
+</ul>
+<h2 id="面向领域问题的大模型训练方法"><a class="header" href="#面向领域问题的大模型训练方法">面向领域问题的大模型训练方法</a></h2>
+<p>采用有监督的精调（Supervised Fine-tune， SFT）技术实现</p>
+<p>预训练：采用领域文档训练行业文本的语言理解能力</p>
+<p>指令精调：面向应用需求，训练任务处理能力</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="文本生成.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="大语言模型.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="文本生成.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="大语言模型.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
